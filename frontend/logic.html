@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>予想ロジックの説明 | LotoLogic</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body class="page-logic">
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="home.html">
+      <img class="logo__img logo__img--header" src="./assets/logo.webp" alt="LotoLogic">
+    </a>
+    <nav class="nav">
+      <a class="btn btn--ghost" href="mypage.html">MYページ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="subnav">
+  <div class="container subnav__inner">
+    <a class="tab" href="home.html">ホーム</a>
+    <a class="tab" href="loto6-logic.html">ロト6ロジック予想</a>
+    <a class="tab" href="loto7-logic.html">ロト7ロジック予想</a>
+    <a class="tab" href="loto6-fortune.html">ロト6占い予想</a>
+    <a class="tab" href="loto7-fortune.html">ロト7占い予想</a>
+    <a class="tab" href="results.html">当選結果</a>
+    <a class="tab" href="mypage.html">MYページ</a>
+  </div>
+</div>
+
+<main class="logic-page">
+
+  <!-- HERO -->
+  <section class="logic-hero">
+    <div class="container logic-hero__inner">
+      <div class="logic-hero__left">
+        <h1 class="logic-hero__title">予想ロジックの考え方</h1>
+        <p class="logic-hero__lead">
+          過去当選データに見られる「分布・配置・再出現」をもとに、<br>
+          無数の組み合わせを <strong>偏りの少ない形へ整える</strong> ための“整理ロジック”です。
+        </p>
+
+        <div class="logic-hero__chips" aria-hidden="true">
+          <span class="chip">分布</span>
+          <span class="chip">高低</span>
+          <span class="chip">奇偶</span>
+          <span class="chip">ゾーン</span>
+          <span class="chip">再出現</span>
+        </div>
+
+      </div>
+
+      <div class="logic-hero__right" aria-hidden="true">
+        <img class="logic-hero__img" src="./assets/hero-loto6-logic.webp" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- 3つの柱 -->
+  <section class="section">
+    <div class="container">
+      <div class="panel panel--featured">
+        <div class="panel__head">
+          <h2 class="panel__title">このロジックが見ている“3つの柱”</h2>
+        </div>
+
+        <div class="logic-cards">
+          <article class="logic-card">
+            <img src="./assets/logic-balance.webp" alt="" aria-hidden="true">
+            <h3>バランス（偏り回避）</h3>
+            <p>高低・奇偶・ゾーンなど、極端に寄りやすい構造を事前に整えます。</p>
+          </article>
+
+          <article class="logic-card">
+            <img src="./assets/logic-frequency.webp" alt="" aria-hidden="true">
+            <h3>頻度（出現の波）</h3>
+            <p>直近の偏りや“空白”を参考に、補助的に候補を組み込みます。</p>
+          </article>
+
+          <article class="logic-card">
+            <img src="./assets/logic-trend.webp" alt="" aria-hidden="true">
+            <h3>流れ（部分継続）</h3>
+            <p>前回数字の一部が残るケースなど、連続性が出やすい形を考慮します。</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ここから：あなたの説明（既存の本文を活かす） -->
+  <section class="section">
+    <div class="container">
+
+      <section class="panel analysis-about" id="analysis-about">
+        <div class="panel__head">
+          <h2 class="panel__title">ロト6の数字を「構造的に整理」するための分析ロジック</h2>
+        </div>
+
+        <div class="about-box about-box--lead">
+          <p>
+            本サイトは、ロト6の過去当選データに見られる
+            <strong>数字の分布・配置・再出現傾向</strong>をもとに、
+            複数の分析法則を組み合わせて数字候補を整理・提示する
+            <strong>予想支援型の分析サイト</strong>です。
+          </p>
+          <p>
+            特定の数字を「当たる」と断定するものではなく、
+            無数に存在する組み合わせを
+            <strong>統計的に偏りの少ない形へ整える</strong>ことを目的としています。
+          </p>
+        </div>
+
+        <div class="about-box">
+          <h3 class="about-title">基本的な考え方</h3>
+          <ul class="about-list">
+            <li>数字の並び方には一定の分布パターンがある</li>
+            <li>高低・奇偶・ゾーンは極端に偏りにくい</li>
+            <li>前回や直近の流れが部分的に継続するケースがある</li>
+          </ul>
+          <p class="about-note">
+            本サイトでは、こうした傾向をもとに「当選組に多い構造」を再現しやすい形へ落とし込みます。
+          </p>
+        </div>
+
+        <div class="about-box">
+          <h3 class="about-title">採用している10の分析視点（概要）</h3>
+          <ol class="about-ol">
+            <li>数字の<strong>間隔（ギャップ）</strong>を利用した連続性分析</li>
+            <li>数値帯を3分割し、バランスよく分散させる構成</li>
+            <li>奇数・偶数の比率や中心付近の配置を考慮</li>
+            <li>直近で出ていない数字を補助的に採用</li>
+            <li>当選組に多い合計値レンジへの収束</li>
+            <li>前回数字の一部を軸にした再出現傾向の考慮</li>
+            <li>末尾（1の位）の偏り回避</li>
+            <li>数字範囲を反転させた高低補正</li>
+            <li>初心者でも崩れにくい基本分散設計</li>
+            <li>高低を交互に配置する対称型構造</li>
+          </ol>
+          <p class="about-note">※これらを単独ではなく、同時に満たす形で組み合わせています。</p>
+        </div>
+
+        <div class="about-box">
+          <h3 class="about-title">このサイトでできること</h3>
+          <ul class="about-list about-list--ok">
+            <li>数字選択の考え方を整理できる</li>
+            <li>極端に偏った組み合わせを事前に除外できる</li>
+            <li>「なぜこの数字構成なのか」を確認できる</li>
+          </ul>
+          <p class="about-note">直感任せではなく、納得できる根拠を持って数字を選びたい方向けの設計です。</p>
+        </div>
+
+        <div class="about-box about-box--warn">
+          <h3 class="about-title">注意事項</h3>
+          <ul class="about-list about-list--warn">
+            <li>本サイトは当選を保証するものではありません</li>
+            <li>抽選は完全にランダムであり、結果を操作することはできません</li>
+            <li>提示する内容は、過去データをもとにした分析・整理結果です</li>
+          </ul>
+          <p class="about-note">ロト6を分析対象として楽しむための補助ツールとしてご利用ください。</p>
+        </div>
+
+        <div class="logic-bottom-cta">
+          <a class="btn btn--primary" href="loto6-logic.html">ロト6の予想番号を発行する</a>
+          <a class="btn btn--ghost" href="home.html">ホームへ</a>
+        </div>
+
+      </section>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p class="footer__copy">Copyright © 2023 - LotoLogic</p>
+    <div class="footer__links">
+      <a href="terms.html">利用規約</a>
+      <a href="privacy.html">プライバシー</a>
+      <a href="tokusho.html">特商法</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

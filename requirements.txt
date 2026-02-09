@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+stripe
+python-dotenv
+sqlalchemy
+alembic
+python-jose[cryptography]
+bcrypt
+pydantic[email]
+httpx

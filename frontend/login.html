@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ログイン・登録 | LotoLogic</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="index.html">
+      <img class="logo__img logo__img--header" src="./assets/logo.webp" alt="LotoLogic">
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container">
+
+      <!-- エラー / 通知 -->
+      <div id="globalMsg" class="card" style="display:none; padding:12px 16px; border-radius:12px; margin-bottom:16px; font-weight:700;"></div>
+
+      <!-- 未課金ユーザー向け: 決済再開パネル (初期非表示) -->
+      <div id="unpaidPanel" style="display:none; margin-bottom:16px;">
+        <section class="panel panel--featured">
+          <div class="panel__head">
+            <h2 class="panel__title">決済が完了していません</h2>
+          </div>
+          <p class="muted-line">
+            決済が完了していません。登録を続けるにはもう一度決済へ進んでください。
+          </p>
+          <div class="draw-card__actions" style="margin-top:14px;">
+            <button type="button" class="btn btn--primary" id="resumeCheckoutBtn">決済へ進む</button>
+            <button type="button" class="btn btn--outline" id="unpaidLogoutBtn">ログアウト</button>
+          </div>
+        </section>
+      </div>
+
+      <!-- 通常のログイン/登録フォーム (初期表示) -->
+      <div id="authForms">
+        <!-- 2カラム -->
+        <div class="dash-grid">
+
+          <!-- ログイン -->
+          <section class="panel">
+            <div class="panel__head">
+              <h2 class="panel__title">ログイン</h2>
+            </div>
+
+            <form id="loginForm">
+              <p class="muted-line" style="margin-bottom:10px;">
+                メールアドレスとパスワードでログインします。
+              </p>
+
+              <div style="display:grid; gap:10px;">
+                <label>
+                  <span class="mini__label">メールアドレス</span>
+                  <input type="email" id="loginEmail" required
+                    style="width:100%; height:44px; padding:0 12px; border-radius:12px; border:1px solid rgba(226,232,240,.95);">
+                </label>
+
+                <label>
+                  <span class="mini__label">パスワード</span>
+                  <input type="password" id="loginPassword" required
+                    style="width:100%; height:44px; padding:0 12px; border-radius:12px; border:1px solid rgba(226,232,240,.95);">
+                </label>
+              </div>
+
+              <div class="draw-card__actions" style="margin-top:14px;">
+                <button class="btn btn--primary" type="submit" id="loginBtn">ログイン</button>
+              </div>
+            </form>
+          </section>
+
+          <!-- 会員登録（＝決済） -->
+          <section class="panel panel--featured">
+            <div class="panel__head">
+              <h2 class="panel__title">会員登録（決済）</h2>
+              <a class="panel__link" href="#">料金：月額550円（税込）</a>
+            </div>
+
+            <p class="muted-line">
+              新規登録は<strong>決済（Stripe）</strong>が完了した時点でアカウントが有効になります。<br>
+              登録後すぐに、開催中の予想（ロト6/7）をモデル選択して閲覧できます。
+            </p>
+
+            <div class="card" style="margin-top:12px; text-align:left;">
+              <p class="mini__label">登録フロー</p>
+              <p class="muted-line" style="margin-top:6px;">
+                1) メール・パスワード入力<br>
+                2) Stripe決済へ進む<br>
+                3) 決済完了 → ホームへ
+              </p>
+            </div>
+
+            <form id="registerForm" style="margin-top:12px;">
+              <div style="display:grid; gap:10px;">
+                <label>
+                  <span class="mini__label">メールアドレス</span>
+                  <input type="email" id="regEmail" required
+                    style="width:100%; height:44px; padding:0 12px; border-radius:12px; border:1px solid rgba(226,232,240,.95);">
+                </label>
+
+                <label>
+                  <span class="mini__label">パスワード</span>
+                  <input type="password" id="regPassword" required minlength="6"
+                    style="width:100%; height:44px; padding:0 12px; border-radius:12px; border:1px solid rgba(226,232,240,.95);">
+                </label>
+              </div>
+
+              <div class="draw-card__actions" style="margin-top:14px;">
+                <button class="btn btn--primary" type="submit" id="regBtn">登録して決済へ進む</button>
+              </div>
+            </form>
+          </section>
+
+        </div>
+
+        <!-- 注意事項（規約リンク） -->
+        <section class="panel">
+          <div class="panel__head">
+            <h2 class="panel__title">ご確認</h2>
+          </div>
+          <p class="muted-line">
+            登録・利用にあたって、以下に同意したものとみなします。
+          </p>
+          <div class="footer__links" style="margin-top:10px;">
+            <a href="terms.html">利用規約</a>
+            <a href="privacy.html">プライバシー</a>
+            <a href="tokusho.html">特商法</a>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p class="footer__copy">Copyright &copy; 2023 - LotoLogic</p>
+    <div class="footer__links">
+      <a href="terms.html">利用規約</a>
+      <a href="privacy.html">プライバシー</a>
+      <a href="tokusho.html">特商法</a>
+    </div>
+  </div>
+</footer>
+
+<script>window.LOTO_ENGINE_BASE="";</script>
+<script src="./js/auth.js"></script>
+<script>
+(function() {
+  var API = window.LOTO_ENGINE_BASE || "";
+  var msgEl = document.getElementById("globalMsg");
+  var params = new URLSearchParams(location.search);
+
+  function showMsg(text, isError) {
+    msgEl.textContent = text;
+    msgEl.style.display = "block";
+    msgEl.style.background = isError ? "rgba(239,68,68,.08)" : "rgba(34,197,94,.08)";
+    msgEl.style.border = isError ? "1px solid rgba(239,68,68,.3)" : "1px solid rgba(34,197,94,.3)";
+    msgEl.style.color = isError ? "#b91c1c" : "#166534";
+  }
+
+  // ------------------------------------------------------------------
+  // 決済再開ヘルパー
+  // ------------------------------------------------------------------
+  function redirectToCheckout(btn, label) {
+    var token = LotoAuth.getToken();
+    console.log("[login] redirectToCheckout called, token exists:", !!token);
+
+    if (!token) {
+      showMsg("トークンが見つかりません。再度ログインしてください。", true);
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "決済ページへ移動中…";
+
+    fetch(API + "/billing/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+      }
+    })
+    .then(function(res) {
+      console.log("[login] checkout response status:", res.status);
+      return res.json().then(function(data) {
+        if (!res.ok) {
+          showMsg(data.detail || "決済セッションの作成に失敗しました", true);
+          btn.disabled = false;
+          btn.textContent = label;
+          return;
+        }
+        console.log("[login] redirecting to:", data.checkout_url);
+        window.location.href = data.checkout_url;
+      });
+    })
+    .catch(function(e) {
+      console.error("[login] checkout error:", e);
+      showMsg("通信エラー: " + e.message, true);
+      btn.disabled = false;
+      btn.textContent = label;
+    });
+  }
+
+  // ------------------------------------------------------------------
+  // ログイン済み + 未課金: unpaid パネルを表示
+  // ------------------------------------------------------------------
+  function showUnpaidPanel() {
+    document.getElementById("authForms").style.display = "none";
+    document.getElementById("unpaidPanel").style.display = "block";
+    console.log("[login] unpaid panel shown");
+  }
+
+  // ------------------------------------------------------------------
+  // unpaid パネルのボタンイベント（常に登録）
+  // ------------------------------------------------------------------
+  document.getElementById("resumeCheckoutBtn").addEventListener("click", function() {
+    console.log("[login] resumeCheckoutBtn clicked");
+    redirectToCheckout(this, "決済へ進む");
+  });
+  document.getElementById("unpaidLogoutBtn").addEventListener("click", function() {
+    console.log("[login] unpaidLogoutBtn clicked");
+    LotoAuth.logout();
+  });
+
+  // ------------------------------------------------------------------
+  // 初期状態の判定
+  // ------------------------------------------------------------------
+  var status = params.get("status");
+  var payment = params.get("payment");
+  var sessionId = params.get("session_id");
+
+  if (payment === "success" && sessionId && LotoAuth.getToken()) {
+    // ------------------------------------------------------------------
+    // Stripe 決済完了後のリダイレクト → verify-session で is_premium 更新
+    // ------------------------------------------------------------------
+    console.log("[login] payment=success, verifying session:", sessionId);
+    showMsg("決済を確認中です…しばらくお待ちください。", false);
+    document.getElementById("authForms").style.display = "none";
+
+    fetch(API + "/billing/verify-session?session_id=" + encodeURIComponent(sessionId), {
+      headers: { "Authorization": "Bearer " + LotoAuth.getToken() }
+    })
+    .then(function(res) {
+      return res.json().then(function(data) { return { ok: res.ok, data: data }; });
+    })
+    .then(function(result) {
+      if (result.ok) {
+        console.log("[login] verify-session success:", result.data);
+        showMsg("決済が完了しました！ホームへ移動します。", false);
+        // ユーザー情報を更新
+        var user = LotoAuth.getUser() || {};
+        user.is_premium = true;
+        LotoAuth.setUser(user);
+        setTimeout(function() {
+          window.location.href = "home.html";
+        }, 1000);
+      } else {
+        console.error("[login] verify-session failed:", result.data);
+        showMsg(result.data.detail || "決済の確認に失敗しました。", true);
+        document.getElementById("authForms").style.display = "block";
+      }
+    })
+    .catch(function(e) {
+      console.error("[login] verify-session error:", e);
+      showMsg("決済確認中にエラーが発生しました: " + e.message, true);
+      document.getElementById("authForms").style.display = "block";
+    });
+
+  } else if (LotoAuth.getToken()) {
+    // ------------------------------------------------------------------
+    // トークンあり → /auth/me で is_premium 確認
+    // ------------------------------------------------------------------
+    console.log("[login] token found, checking /auth/me");
+    fetch(API + "/auth/me", {
+      headers: { "Authorization": "Bearer " + LotoAuth.getToken() }
+    })
+    .then(function(res) {
+      if (res.status === 401) {
+        LotoAuth.removeToken();
+        LotoAuth.removeUser();
+        if (status === "cancelled") {
+          showMsg("決済がキャンセルされました。再度登録してください。", true);
+        }
+        return null;
+      }
+      return res.json();
+    })
+    .then(function(user) {
+      if (!user) return;
+      LotoAuth.setUser(user);
+      console.log("[login] user:", user.email, "is_premium:", user.is_premium);
+
+      if (user.is_premium) {
+        window.location.href = "home.html";
+        return;
+      }
+
+      if (status === "cancelled") {
+        showMsg("決済がキャンセルされました。登録を続けるにはもう一度決済へ進んでください。", true);
+      } else if (status === "unpaid") {
+        showMsg("決済が完了していません。登録を続けるにはもう一度決済へ進んでください。", true);
+      }
+      showUnpaidPanel();
+    })
+    .catch(function(e) {
+      console.error("[login] /auth/me error:", e);
+    });
+
+  } else {
+    // ------------------------------------------------------------------
+    // トークンなし → フォーム表示
+    // ------------------------------------------------------------------
+    console.log("[login] no token found");
+    if (status === "cancelled") {
+      showMsg("決済がキャンセルされました。再度お試しください。", true);
+    }
+  }
+
+  // ------------------------------------------------------------------
+  // ログインフォーム
+  // ------------------------------------------------------------------
+  document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    var btn = document.getElementById("loginBtn");
+    btn.disabled = true;
+    btn.textContent = "ログイン中…";
+
+    fetch(API + "/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: document.getElementById("loginEmail").value,
+        password: document.getElementById("loginPassword").value
+      })
+    })
+    .then(function(res) {
+      return res.json().then(function(data) { return { ok: res.ok, data: data }; });
+    })
+    .then(function(result) {
+      if (!result.ok) {
+        showMsg(result.data.detail || "ログインに失敗しました", true);
+        btn.disabled = false;
+        btn.textContent = "ログイン";
+        return;
+      }
+
+      LotoAuth.setToken(result.data.access_token);
+      LotoAuth.setUser(result.data.user);
+
+      return fetch(API + "/auth/me", {
+        headers: { "Authorization": "Bearer " + result.data.access_token }
+      })
+      .then(function(meRes) { return meRes.json(); })
+      .then(function(meData) {
+        LotoAuth.setUser(meData);
+        if (meData.is_premium) {
+          window.location.href = "home.html";
+        } else {
+          btn.textContent = "決済ページへ移動中…";
+          redirectToCheckout(btn, "ログイン");
+        }
+      });
+    })
+    .catch(function(e) {
+      console.error("[login] login error:", e);
+      showMsg("通信エラー: " + e.message, true);
+      btn.disabled = false;
+      btn.textContent = "ログイン";
+    });
+  });
+
+  // ------------------------------------------------------------------
+  // 登録フォーム → 即 Stripe Checkout
+  // ------------------------------------------------------------------
+  document.getElementById("registerForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    var btn = document.getElementById("regBtn");
+    btn.disabled = true;
+    btn.textContent = "登録中…";
+
+    fetch(API + "/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: document.getElementById("regEmail").value,
+        password: document.getElementById("regPassword").value
+      })
+    })
+    .then(function(res) {
+      return res.json().then(function(data) { return { ok: res.ok, data: data }; });
+    })
+    .then(function(result) {
+      if (!result.ok) {
+        showMsg(result.data.detail || "登録に失敗しました", true);
+        btn.disabled = false;
+        btn.textContent = "登録して決済へ進む";
+        return;
+      }
+
+      LotoAuth.setToken(result.data.access_token);
+      LotoAuth.setUser(result.data.user);
+
+      btn.textContent = "決済ページへ移動中…";
+      redirectToCheckout(btn, "登録して決済へ進む");
+    })
+    .catch(function(e) {
+      console.error("[login] register error:", e);
+      showMsg("通信エラー: " + e.message, true);
+      btn.disabled = false;
+      btn.textContent = "登録して決済へ進む";
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

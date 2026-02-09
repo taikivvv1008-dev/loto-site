@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ロト7占い予想 | LotoLogic</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body class="page-loto6-fortune" data-round="2" data-draw-date="2026-01-10">
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="home.html">
+      <img class="logo__img logo__img--header" src="./assets/logo.webp" alt="LotoLogic">
+    </a>
+
+    <nav class="nav">
+      <a class="btn btn--ghost" href="mypage.html">MYページ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- サブナビ（タブ） -->
+<div class="subnav">
+  <div class="container subnav__inner">
+    <a class="tab" href="home.html">ホーム</a>
+    <a class="tab" href="loto6-logic.html">ロト6ロジック予想</a>
+    <a class="tab" href="loto7-logic.html">ロト7ロジック予想</a>
+    <a class="tab" href="loto6-fortune.html">ロト6占い予想</a>
+    <a class="tab is-active" href="loto7-fortune.html">ロト7占い予想</a>
+    <a class="tab" href="results.html">当選結果</a>
+    <a class="tab" href="mypage.html">MYページ</a>
+  </div>
+</div>
+
+<main class="prediction-page">
+
+  <!-- 占いHERO -->
+  <section class="hero-issue fortune-hero">
+    <div class="container">
+      <div class="fortune-hero__card">
+
+        <div class="fortune-hero__left">
+          <h1 class="fortune-hero__title">誕生日・星座に基づく予想番号</h1>
+          <p class="fortune-hero__subtitle">
+            誕生日や星座を基に<br>
+            ロト7の予想番号をお届けします。
+          </p>
+
+          <div class="fortune-hero__label">あなたの生年月日をこちらに！</div>
+
+          <div class="birth-select">
+            <select id="birthYear"></select>
+            <select id="birthMonth"></select>
+            <select id="birthDay"></select>
+          </div>
+
+          <div class="issue-count">
+            <label class="issue-count__label" for="issueSelect">発行数</label>
+            <select id="issueSelect" class="issue-count__select"></select>
+          </div>
+
+          <button class="btn btn--primary issue-button" id="issueButton" type="button">
+            予想番号を発行する
+          </button>
+        </div>
+
+        <div class="fortune-hero__right">
+          <img src="./assets/fortune-icon.webp" alt="" aria-hidden="true" class="fortune-hero__img">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- 運勢コメント（A接続予定） -->
+      <div class="card fortune-card" id="fortuneCard">
+        <h2 class="card__title">今回の運勢</h2>
+
+        <div class="prediction-state" id="fortuneState">
+          <div class="prediction-state__panel">
+            <span class="prediction-state__text" id="fortuneStateText">生年月日を入力して発行してください</span>
+          </div>
+
+          <img class="prediction-state__bot"
+            src="./assets/fortune-icon.webp"
+            alt=""
+            aria-hidden="true">
+        </div>
+
+        <!-- Aから返す description を表示（3〜5行想定） -->
+        <div id="fortuneText" class="fortune-text" hidden></div>
+      </div>
+
+      <!-- 予想番号表示欄 -->
+      <div class="card prediction-card" style="margin-top:14px;">
+        <h2 class="card__title">今回の予想番号</h2>
+        <p class="prediction-box__meta">ロト7（1口・7個）／そのまま購入できます</p>
+
+        <div id="predictionCards"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 使い方（ロト6ロジック予想と同仕様） -->
+  <section class="section bg-soft">
+    <div class="container">
+
+      <div class="howto">
+        <h2 class="howto__title">予想番号の使い方</h2>
+
+        <div class="howto__row">
+          <div class="howto__item">
+            <div class="howto__icon">
+              <img src="./assets/btn-generate.webp" alt="" aria-hidden="true">
+            </div>
+            <div class="howto__label">STEP 1｜予想番号を発行</div>
+          </div>
+
+          <div class="howto__arrow">→</div>
+
+          <div class="howto__item">
+            <div class="howto__icon">
+              <img src="./assets/ticket-single.webp" alt="" aria-hidden="true">
+            </div>
+            <div class="howto__label">STEP 2｜そのまま購入</div>
+          </div>
+
+          <div class="howto__arrow">→</div>
+
+          <div class="howto__item">
+            <div class="howto__icon">
+              <img src="./assets/ticket-stack.webp" alt="" aria-hidden="true">
+            </div>
+            <div class="howto__label">STEP 3｜複数口はそのまま使う</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p class="footer__copy">Copyright © 2023 - LotoLogic</p>
+    <div class="footer__links">
+      <a href="terms.html">利用規約</a>
+      <a href="privacy.html">プライバシー</a>
+      <a href="tokusho.html">特商法</a>
+    </div>
+  </div>
+</footer>
+<script>window.LOTO_ENGINE_BASE="";</script>
+<script src="./js/auth.js"></script>
+<script>LotoAuth.requirePremium();</script>
+<script src="./js/loto7-fortune.js" defer></script>
+</body>
+</html>

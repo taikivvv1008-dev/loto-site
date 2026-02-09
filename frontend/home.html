@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ホーム | LotoLogic</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body class="page-home">
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="index.html">
+      <img class="logo__img logo__img--header" src="./assets/logo.webp" alt="LotoLogic">
+    </a>
+
+    <nav class="nav">
+      <a class="btn btn--ghost" href="mypage.html">MYページ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- サブナビ（タブ） -->
+<div class="subnav">
+  <div class="container subnav__inner">
+    <a class="tab" href="home.html">ホーム</a>
+    <a class="tab" href="loto6-logic.html">ロト6ロジック予想</a>
+    <a class="tab" href="loto7-logic.html">ロト7ロジック予想</a>
+    <a class="tab" href="loto6-fortune.html">ロト6占い予想</a>
+    <a class="tab" href="loto7-fortune.html">ロト7占い予想</a>
+    <a class="tab" href="results.html">当選結果</a>
+    <a class="tab" href="mypage.html">MYページ</a>
+  </div>
+</div>
+
+<main>
+  <section class="section">
+    <div class="container">
+
+      <!-- ① 最新の抽選結果 -->
+      <section class="panel panel--result">
+        <div class="panel__head">
+          <h2 class="panel__title">最新の抽選結果</h2>
+          <a class="panel__link" href="results.html">過去の結果 →</a>
+        </div>
+
+        <div class="results-grid">
+          <article class="result-card result-card--l6">
+            <div class="result-head">
+              <span class="badge badge--blue">ロト6</span>
+              <p class="result-meta">第<span>1922</span>回（2026-01-08）</p>
+            </div>
+
+            <div class="nums nums--sm">
+              <span class="num">04</span>
+              <span class="num">12</span>
+              <span class="num">15</span>
+              <span class="num">18</span>
+              <span class="num">26</span>
+              <span class="num">40</span>
+            </div>
+
+            <a class="mini-link" href="results.html">詳細を見る →</a>
+          </article>
+
+          <article class="result-card result-card--l7">
+            <div class="result-head">
+              <span class="badge badge--gold">ロト7</span>
+              <p class="result-meta">第<span>630</span>回（2026-01-09）</p>
+            </div>
+
+            <div class="nums nums--sm">
+              <span class="num">04</span>
+              <span class="num">12</span>
+              <span class="num">15</span>
+              <span class="num">18</span>
+              <span class="num">26</span>
+              <span class="num">40</span>
+              <span class="num">41</span>
+            </div>
+
+            <a class="mini-link" href="results.html">詳細を見る →</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- ② 開催中 -->
+      <section class="panel panel--featured">
+        <div class="panel__head">
+          <h2 class="panel__title">開催中</h2>
+        </div>
+
+        <div class="draw-cards">
+          <article class="draw-card">
+            <span class="badge badge--blue">ロト6</span>
+            <p class="draw-card__meta">第1923回（抽選日：2026-01-15）</p>
+            <a class="btn btn--primary" href="loto6-logic.html">
+              おすすめ予想を見る
+            </a>
+          </article>
+
+          <article class="draw-card">
+            <span class="badge badge--gold">ロト7</span>
+            <p class="draw-card__meta">第631回（抽選日：2026-01-16）</p>
+            <a class="btn btn--primary" href="loto7-fortune.html">
+              おすすめ予想を見る
+            </a>
+          </article>
+        </div>
+      </section>
+
+      
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p class="footer__copy">Copyright © 2023 - LotoLogic</p>
+    <div class="footer__links">
+      <a href="terms.html">利用規約</a>
+      <a href="privacy.html">プライバシー</a>
+      <a href="tokusho.html">特商法</a>
+    </div>
+  </div>
+</footer>
+
+<script>window.LOTO_ENGINE_BASE="";</script>
+<script src="./js/auth.js"></script>
+<script>LotoAuth.requirePremium();</script>
+</body>
+</html>

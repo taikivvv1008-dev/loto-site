@@ -1,0 +1,3476 @@
+:root{
+  --radius: 18px;
+  --line: rgba(15, 23, 42, .08);
+  --shadow: 0 10px 30px rgba(2, 6, 23, .08);
+}
+
+.card,
+.step,
+.voice__bubble,
+.faq__item{
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  border-radius: 16px;
+  background: #fff;
+}
+
+
+
+/* ブロック背景プリセット */
+.bg-ivory{
+  background:
+    radial-gradient(rgba(0,0,0,.03) 1px, transparent 1px),
+    linear-gradient(180deg, var(--bg-ivory) 0%, var(--bg-ivory-2) 100%);
+  background-size: 4px 4px, auto;
+}
+
+.bg-soft{
+  background: var(--bg-soft);
+}
+
+.bg-lemon{
+  background: var(--bg-lemon);
+}
+
+/* ブロック境界がズレて見えるの防止（重要） */
+.section{
+  padding: 96px 0;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+*{ box-sizing:border-box; }
+html, body{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  background: none;
+}
+
+body{
+  background:
+    linear-gradient(
+      180deg,
+      #2f7ecb 0%,
+      #7bb9ea 30%,
+      #e9f3fb 65%,
+      #ffffff 100%
+    );
+}
+
+
+
+img{ max-width:100%; display:block; }
+
+.container{
+  width:min(1040px, calc(100% - 40px));
+  margin-inline:auto;
+}
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:#fff;
+  border-bottom:1px solid rgba(226,232,240,.7);
+  backdrop-filter: blur(8px);
+}
+.header__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 0;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
+  line-height:0;
+}
+
+.logo img{
+  height:50px;
+  width:auto;
+  display:block;
+}
+.nav{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.hamburger{
+  width:40px; height:40px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+}
+.hamburger span{
+  display:block;
+  width:18px;
+  height:2px;
+  background:#0f172a;
+  margin:2px 0;
+}
+
+/* Buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:44px;
+  padding:0 18px;
+  border-radius:999px;
+  font-weight:700;
+  text-decoration:none;
+  border:1px solid transparent;
+  transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+  white-space:nowrap;
+}
+.btn:active{ transform: translateY(1px); }
+
+.btn--primary{
+  color:#fff;
+  background: linear-gradient(180deg, #1a66c9 0%, #0f56b4 100%);
+  box-shadow: 0 10px 18px rgba(21, 93, 178, .25);
+}
+.btn--primary:hover{ box-shadow: 0 14px 24px rgba(21, 93, 178, .28); }
+
+.btn--outline{
+  color:#0b3a74;
+  background:#fff;
+  border-color: rgba(11,58,116,.22);
+}
+.btn--outline:hover{ background:#f6fbff; }
+
+.btn--ghost{
+  color:#0b3a74;
+  background:#eef5ff;
+  border-color: rgba(11,58,116,.14);
+}
+.btn--ghost:hover{ background:#e6f0ff; }
+
+/* HERO */
+.hero{
+  position: relative;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(47,126,203,0.96) 0%,
+      rgba(123,185,234,0.96) 100%
+    ),
+    url("./assets/hero-bg.webp");
+
+  background-repeat: no-repeat;
+  background-position: right -200px center;
+  background-size: 760px auto;
+}
+
+/* 左側に光のグラデを足して高級感 */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    90deg,
+    rgba(47,126,203,.70) 0%,
+    rgba(47,126,203,.35) 45%,
+    rgba(47,126,203,0) 75%
+  );
+  pointer-events:none;
+  z-index:0;
+}
+
+/* 文字・ボタンを最前面 */
+.hero .container,
+.hero__inner{
+  position: relative;
+  z-index:1;
+}
+
+.hero__inner{
+  display:grid;
+  grid-template-columns: 1.05fr .95fr; /* ← 左を少し広くして中央寄せ感 */
+  gap: 70px;                           /* ← 間隔は程よく */
+  align-items: center;
+  padding: 34px 0 30px;
+  justify-items: center !important;
+}
+.hero__kicker{
+  display:inline-flex;
+  padding:6px 12px;
+  border-radius:999px;
+  background: rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.18);
+  font-weight:800;
+  letter-spacing:.02em;
+  margin:0 0 12px;
+}
+.hero__title{
+  margin:0 0 12px;
+  font-size: clamp(26px, 3.2vw, 40px);
+  line-height:1.2;
+  letter-spacing:-.02em;
+}
+.hero__desc{
+  margin:0 0 18px;
+  color: rgba(255,255,255,.86);
+  line-height:1.7;
+}
+.hero__cta{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:0 0 10px;
+}
+.hero__note{
+  margin:0;
+  font-size:12px;
+  color: rgba(255,255,255,.76);
+}
+.hero__left{
+  position: relative;
+  z-index: 1;             /* ← 文字を前へ */
+}
+
+
+/* HEROだけ少し広くする（他セクションはそのまま） */
+.container--hero{
+  width: min(1200px, calc(100% - 40px));
+}
+.hero__art{
+  position: absolute;
+  inset: -80px -120px -120px -120px; /* はみ出し */
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__art img{
+  width: 1600px;          /* ← デカくする本体 */
+  max-width: none;        /* ← max-width:100% を無効化 */
+  opacity: .14;           /* ← 背景化 */
+  filter: blur(.6px) saturate(.9);
+  transform: translate(120px, 10px); /* ← 位置調整 */
+}
+.hero__right{
+  position: relative;
+}
+
+/* Sections */
+.section{
+  padding:48px 0;
+  background: transparent;
+}
+.section--alt{
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.section__title{
+  text-align:center;
+  margin:0 0 18px;
+  font-size: clamp(18px, 2.2vw, 26px);
+  letter-spacing:-.01em;
+  margin-bottom: 32px;
+}
+/* reason-icons.webp 1枚運用 */
+.reason__layout{
+  display: grid;
+  grid-template-columns: .9fr 1.1fr; /* ← 左を細く、右を広く */
+  gap: 28px;
+  align-items: start;
+  margin-top: 22px;
+}
+.voice__bubble,
+.step{
+  background: #ffffff;
+}
+/* 画像側 */
+.reason__media{
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.reason__media img{
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 2 / 1;
+  object-fit: contain;
+}
+
+/* テキスト側 */
+.reason__list{
+  display: grid;
+  gap: 14px;
+}
+
+.reason__media{
+  order: 2; /* 右へ */
+}
+
+.reason__list{
+  order: 1; /* 左へ */
+}
+/* スマホは縦並びに戻す */
+@media (max-width: 860px){
+  .reason__layout{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Checklist */
+.checklist{
+  list-style:none;
+  padding:0;
+  margin:18px auto 0;
+  width:min(760px, 100%);
+  display:grid;
+  gap:10px;
+}
+.checklist li{
+  background:#fff;
+  border:1px solid rgba(226,232,240,.85);
+  border-radius: 14px;
+  padding:12px 14px;
+  box-shadow: 0 8px 20px rgba(2,6,23,.06);
+  position:relative;
+  padding-left:44px;
+  color: var(--text);
+}
+.checklist li::before{
+  content:"✓";
+  position:absolute;
+  left:14px; top:10px;
+  width:24px; height:24px;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+  background:#e6f2ff;
+  color:#0f56b4;
+  font-weight:900;
+}
+
+/* Cards */
+.cards3{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:16px;
+  margin-top:18px;
+}
+.card{
+  background: var(--card);
+  border:1px solid rgba(226,232,240,.9);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 16px 18px; /* 上だけ微調整OK */
+  text-align:center;
+}
+.card__icon{
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 12px;
+  display: grid;
+  place-items: center;
+}
+
+
+.card__icon img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.card__title{
+  margin:0 0 6px;
+  font-size:16px;
+}
+.card__text{
+  margin:0;
+  color: var(--muted);
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* Testimonials */
+.voices{
+  width:min(860px, 100%);
+  margin: 18px auto 0;
+  display:grid;
+  gap: 14px;
+}
+
+.voices{
+  width: min(1100px, 100%);
+  margin: 18px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* ← 横3列 */
+  gap: 20px;
+}
+
+.voice__avatar{
+  flex:0 0 auto;
+  width:72px;
+  height:72px;
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+
+.voice__avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* 吹き出し */
+.voice__bubble{
+  position:relative;
+  background:#fff;
+  border:1px solid rgba(226,232,240,.95);
+  border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(2,6,23,.08);
+  padding: 14px 16px;
+  width:100%;
+  max-width: 720px;   /* ここを調整（680〜760で好み） */
+}
+
+/* 左の三角（スクショ寄せ） */
+.voice__bubble::before{
+  content:"";
+  position:absolute;
+  left:-8px;
+  top:18px;
+  width:16px;
+  height:16px;
+  background:#fff;
+  border-left:1px solid rgba(226,232,240,.95);
+  border-bottom:1px solid rgba(226,232,240,.95);
+  transform: rotate(45deg);
+  content: none !important;
+}
+
+.voice__text{
+  margin:0;
+  line-height:1.65;
+}
+
+.voice__meta{
+  margin:6px 0 0;
+  color: var(--muted);
+  font-size:12px;
+}
+
+/* SP */
+@media (max-width: 560px){
+  .voice__avatar{ width:48px; height:48px; }
+  .voice__bubble{ padding: 12px 14px; }
+  .voice__bubble::before{ top:16px; }
+}
+
+
+/* Steps */
+.steps{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:16px;
+  margin-top:18px;
+}
+
+.step{
+  background:#fff;
+  border:1px solid rgba(226,232,240,.95);
+  border-radius: 18px;
+  padding:18px 16px;
+  box-shadow: 0 10px 26px rgba(2,6,23,.08);
+  text-align:center;
+}
+
+.step__badge{
+  display:inline-flex;
+  margin:0 auto 10px;
+  height:26px;
+  padding:0 12px;
+  border-radius:999px;
+  background:#e6f2ff;
+  color:#0f56b4;
+  font-weight:900;
+  font-size:12px;
+  align-items:center;
+}
+
+.step__icon{
+  width:96px;
+  height:96px;
+  margin:0 auto 10px;
+  display:grid;
+  place-items:center;
+}
+
+.step__icon img{
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  display:block;
+}
+
+.step__title{
+  margin:0 0 6px;
+  font-size:16px;
+  font-weight:900;
+}
+
+.step__text{
+  margin:0;
+  color: var(--muted);
+  line-height:1.7;
+  font-size:14px;
+}
+
+@media (max-width: 860px){
+  .steps{ grid-template-columns: 1fr; }
+  .step{ text-align:left; }
+  .step__badge{ margin:0 0 10px; }
+  .step__icon{ margin:0 0 10px; }
+}
+
+
+/* FAQ */
+.faq{
+  width:min(820px, 100%);
+  margin:18px auto 0;
+  display:grid;
+  gap:10px;
+}
+.faq__item{
+  background:#fff;
+  border:1px solid rgba(226,232,240,.9);
+  border-radius: 16px;
+  padding:12px 14px;
+  box-shadow: 0 10px 26px rgba(2,6,23,.06);
+}
+.faq__item summary{
+  cursor:pointer;
+  font-weight:800;
+}
+.faq__item p{
+  margin:10px 0 0;
+  color: var(--muted);
+  line-height:1.7;
+  font-size:14px;
+}
+
+/* Bottom CTA */
+.bottom-cta{
+  background: linear-gradient(180deg, #0b3a74 0%, #0f5fb8 100%);
+  color:#fff;
+  padding:44px 0;
+}
+.bottom-cta__inner{
+  text-align:center;
+}
+.bottom-cta__title{
+  margin:0 0 10px;
+  font-size: clamp(18px, 2.2vw, 26px);
+}
+.bottom-cta__text{
+  margin:0 0 16px;
+  color: rgba(255,255,255,.86);
+  line-height:1.7;
+}
+.bottom-cta__buttons{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* Footer */
+.footer{
+  border-top:1px solid rgba(226,232,240,.85);
+  padding:18px 0;
+}
+.footer__inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.footer__copy{
+  margin:0;
+  color: var(--muted);
+  font-size:12px;
+}
+.footer__links{
+  display: inline-flex;   /* ← これが効く：中身の幅に縮む */
+  gap: 14px;
+  flex-wrap: wrap;        /* ← PCでも崩れ防止（任意だけどおすすめ） */
+}
+
+.footer__links a{
+  color: var(--muted);
+  text-decoration:none;
+  font-size:12px;
+}
+.footer__links a:hover{ text-decoration:underline; }
+
+/* Responsive */
+@media (max-width: 860px){
+  .hero__inner{ grid-template-columns: 1fr; padding:26px 0; }
+  .cards3{ grid-template-columns: 1fr; }
+  .steps{ grid-template-columns: 1fr; }
+  .header__inner{ padding:10px 0; }
+}
+
+@media (max-width: 860px){
+  .hero__art{
+    max-width: 320px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 860px){
+  .hero__art{
+    max-width: 360px;
+    margin-inline: auto;
+    transform: none;
+  }
+}
+
+@media (max-width: 860px){
+  .steps{
+    justify-items: center;   /* ← これが一番重要 */
+  }
+
+  .step{
+    max-width: 420px;        /* ← 横に広がりすぎ防止 */
+    width: 100%;
+    text-align: center;      /* ← 見出しと説明は中央 */
+  }
+}
+
+/* HEROだけ幅を広げる（確実に効かせる） */
+.hero .container{
+  width: min(1200px, calc(100% - 40px)) !important;
+}
+
+.section,
+.section--alt{
+  background: transparent !important;
+  border: none !important;
+}
+
+/* 背景をブロッククラスで管理するため、既存の背景指定を無効化 */
+.section--alt{ background: transparent !important; }
+/* 青を使うのはここだけ */
+.hero,
+.bottom-cta{
+  background: linear-gradient(
+    180deg,
+    #2f7ecb 0%,
+    #7bb9ea 100%
+  );
+}
+
+/* それ以外は全部白寄り */
+.section,
+.section--alt{
+  background: #f7f9fc !important;
+}
+.hero__title{
+  color: rgba(255,255,255,.96);
+  letter-spacing: -0.02em;
+}
+
+.hero__desc{
+  color: rgba(255,255,255,.82);
+  max-width: 34em;
+}
+
+
+.hero .btn--primary{
+  padding: 14px 28px;
+  font-size:16px;
+  font-weight:700;
+  box-shadow: 0 18px 40px rgba(0,0,0,.22);
+  background: linear-gradient(180deg,#1a66c9 0%, #0b4aa0 100%);
+}
+
+.hero__left .btn.btn--primary{
+  transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+}
+
+.hero__left .btn.btn--primary:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(0,0,0,.22);
+  filter: brightness(1.03);
+}
+/* 最後のCTA専用ボタン */
+.btn--final{
+  background: #0b3a74;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 16px 40px;
+  border-radius: 999px;
+  box-shadow: 0 10px 26px rgba(11,58,116,.25);
+  transition: all .25s ease;
+}
+
+/* hoverは控えめ */
+.btn--final:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(11,58,116,.32);
+}
+/* =========================
+   最後CTAをグレー背景に最適化
+   ========================= */
+.bottom-cta{
+  background: linear-gradient(180deg,#f3f6fa 0%, #e9eef4 100%) !important;
+  color: #0f172a !important;      /* ← 白固定を潰す */
+}
+
+/* 見出し・本文も確実に濃色へ */
+.bottom-cta__title{
+  color: #0f172a !important;
+}
+.bottom-cta__text{
+  color: rgba(15,23,42,.78) !important;
+}
+
+/* ボタンを1個運用にした前提：中央寄せはそのまま */
+.bottom-cta__buttons{
+  justify-content: center;
+}
+/* 右側の薄い背景イラスト */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:-140px; /* はみ出させる */
+  background: url("../assets/hero-bg.webp") no-repeat;
+  background-position: 62% 38%;
+  background-size: 1800px auto;
+  opacity:.16;
+  filter: blur(.6px) saturate(.9);
+  pointer-events:none;
+  z-index:0; /* ← -1にしない */
+}
+/* 文字・ボタン側は前に固定 */
+.hero .container,
+.hero__inner{
+  position: relative !important;
+  z-index: 1 !important;
+}
+/* HEROを背景レイヤーの親にする */
+.hero{
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg,#2f7ecb 0%, #7bb9ea 100%);
+  color:#fff;
+}
+
+/* テキスト・ボタンは最前面 */
+.hero .container,
+.hero__inner{
+  position: relative !important;
+  z-index: 1 !important;
+}
+@media (max-width: 860px){
+  /* 使い方カード内を中央揃え */
+  .step{
+    text-align: center;
+  }
+
+  /* STEPバッジとアイコンを確実に中央へ */
+  .step__badge,
+  .step__icon{
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+/* モデル一覧：4枚を2x2で見せる */
+.cards3--models{
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* スマホは1列 */
+@media (max-width: 860px){
+  .cards3--models{
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================
+   ロゴ下タブ（サブナビ）
+   ========================= */
+.subnav{
+  position: sticky;
+  top: 61px;                 /* ヘッダー高さに合わせる（ロゴ50px+padding想定） */
+  z-index: 49;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(226,232,240,.8);
+}
+
+.subnav__inner{
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  overflow-x: auto;          /* スマホで横スクロール */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.subnav__inner::-webkit-scrollbar{ display:none; }
+
+.tab{
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: #eef5ff;
+  border: 1px solid rgba(11,58,116,.14);
+  color: #0b3a74;
+  font-weight: 800;
+  font-size: 13px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.tab:hover{ background:#e6f0ff; }
+
+.tab.is-active{
+  background: linear-gradient(180deg, #1a66c9 0%, #0f56b4 100%);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 10px 18px rgba(21, 93, 178, .18);
+}
+.model-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.model-card{
+  background: #fff;
+  border: 1px solid rgba(226,232,240,.9);
+  border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(2,6,23,.08);
+  overflow: hidden;
+}
+
+.model-card__img{
+  width: 100%;
+  display: block;
+}
+
+.model-card__body{
+  padding: 14px 14px 16px;
+}
+
+.model-card__title{
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.model-card__desc{
+  margin: 0 0 12px;
+  color: rgba(15,23,42,.75);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+@media (max-width: 860px){
+  .model-grid{
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================
+   HOME（豪華版）
+   ========================= */
+
+/* タイトル周り */
+.dash-title{
+  margin: 0;
+  font-size: clamp(18px, 2.2vw, 26px);
+  letter-spacing: -.01em;
+}
+.dash-sub{
+  margin: 8px 0 0;
+  color: rgba(15,23,42,.70);
+  line-height: 1.7;
+}
+
+/* 上段 */
+.dash-top{
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.dash-welcome{
+  background: #fff;
+  border: 1px solid rgba(226,232,240,.9);
+  border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(2,6,23,.08);
+  padding: 16px;
+}
+
+.dash-welcome__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+}
+
+/* 課金ステータス */
+.pill{
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 12px;
+  border: 1px solid rgba(226,232,240,.9);
+  background: #f7f9fc;
+  color: rgba(15,23,42,.8);
+  white-space: nowrap;
+}
+.pill--active{
+  background: rgba(16,185,129,.12);
+  border-color: rgba(16,185,129,.22);
+  color: rgba(6,95,70,.95);
+}
+.pill--expired{
+  background: rgba(239,68,68,.10);
+  border-color: rgba(239,68,68,.22);
+  color: rgba(127,29,29,.95);
+}
+
+/* クイック導線 */
+.quick{
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.quick__btn{
+  display:block;
+  padding: 12px 12px;
+  border-radius: 16px;
+  text-decoration:none;
+  border: 1px solid rgba(226,232,240,.95);
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+  box-shadow: 0 10px 20px rgba(2,6,23,.06);
+}
+.quick__btn--ghost{
+  background: #fff;
+}
+.quick__label{
+  display:block;
+  font-weight: 900;
+  color: rgba(15,23,42,.92);
+  margin-bottom: 4px;
+}
+.quick__meta{
+  display:block;
+  color: rgba(15,23,42,.62);
+  font-size: 12px;
+}
+
+/* サマリー */
+.dash-summary{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.mini{
+  background:#fff;
+  border: 1px solid rgba(226,232,240,.9);
+  border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(2,6,23,.08);
+  padding: 14px;
+}
+.mini__label{
+  margin:0;
+  color: rgba(15,23,42,.60);
+  font-weight: 800;
+  font-size: 12px;
+}
+.mini__value{
+  margin: 6px 0 0;
+  font-weight: 900;
+  font-size: 18px;
+}
+.mini__note{
+  margin: 4px 0 0;
+  color: rgba(15,23,42,.45);
+  font-size: 11px;
+}
+
+/* グリッド */
+.dash-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* パネル */
+.panel{
+  background:#fff;
+  border: 1px solid rgba(226,232,240,.9);
+  border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(2,6,23,.08);
+  padding: 16px;
+}
+.panel__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.panel__title{
+  margin:0;
+  font-weight: 900;
+  font-size: 16px;
+}
+.panel__link{
+  color: rgba(11,58,116,.92);
+  text-decoration:none;
+  font-weight: 800;
+  font-size: 12px;
+}
+.panel__link:hover{ text-decoration: underline; }
+
+.panel--featured{
+  border-color: rgba(11,58,116,.14);
+}
+
+/* 開催回カード */
+.draw-cards{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.draw-card{
+  border: 1px solid rgba(226,232,240,.9);
+  border-radius: 18px;
+  padding: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+}
+.draw-card__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.draw-card__meta{
+  color: rgba(15,23,42,.70);
+  font-weight: 800;
+  font-size: 12px;
+}
+.draw-card__date{
+  margin:0 0 12px;
+  color: rgba(15,23,42,.62);
+  font-size: 12px;
+}
+.draw-card__actions{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* バッジ */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 12px;
+  border: 1px solid rgba(226,232,240,.9);
+  background: #fff;
+}
+.badge--blue{
+  border-color: rgba(11,58,116,.16);
+  background: rgba(11,58,116,.06);
+  color: rgba(11,58,116,.95);
+}
+.badge--gold{
+  border-color: rgba(161,98,7,.18);
+  background: rgba(234,179,8,.10);
+  color: rgba(133,77,14,.95);
+}
+
+/* おすすめ */
+.chip{
+  display:inline-flex;
+  align-items:center;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(11,58,116,.18);
+  background: rgba(11,58,116,.06);
+  color: rgba(11,58,116,.95);
+  font-weight: 900;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.featured__headline{
+  margin: 0 0 10px;
+  font-weight: 900;
+  font-size: 16px;
+}
+.featured__desc{
+  margin: 10px 0 0;
+  color: rgba(15,23,42,.72);
+  line-height: 1.7;
+}
+.featured__foot{
+  margin-top: 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.one-word{
+  color: rgba(15,23,42,.55);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+/* 既存のballをホーム向けに少し大きく */
+.balls--lg .ball{
+  width: 48px;
+  height: 48px;
+  font-size: 14px;
+}
+
+/* モデルショートカット */
+.model-short{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.model-item{
+  display:block;
+  border-radius: 16px;
+  border: 1px solid rgba(226,232,240,.95);
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+  padding: 12px 12px;
+  text-decoration: none;
+  box-shadow: 0 10px 20px rgba(2,6,23,.06);
+}
+.model-item__title{
+  display:block;
+  font-weight: 900;
+  color: rgba(15,23,42,.92);
+  margin-bottom: 4px;
+}
+.model-item__desc{
+  display:block;
+  color: rgba(15,23,42,.62);
+  font-size: 12px;
+}
+
+/* ロック */
+.panel--lock{
+  border-color: rgba(239,68,68,.20);
+  background: linear-gradient(180deg, rgba(239,68,68,.06) 0%, #fff 100%);
+}
+.lock-text{
+  margin: 0 0 12px;
+  color: rgba(15,23,42,.70);
+  line-height: 1.7;
+}
+
+/* SP最適化 */
+@media (max-width: 860px){
+  .dash-top{ grid-template-columns: 1fr; }
+  .dash-grid{ grid-template-columns: 1fr; }
+  .quick{ grid-template-columns: 1fr; }
+  .model-short{ grid-template-columns: 1fr; }
+}
+/* =========================
+   当選番号：金ボールUI
+   ========================= */
+.nums{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
+
+/* 画像っぽい「金コイン」 */
+.num{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+
+  /* 金のグラデ＋光沢 */
+  background:
+    radial-gradient(circle at 30% 28%, rgba(255,255,255,.95) 0 14%, rgba(255,255,255,0) 28%),
+    radial-gradient(circle at 70% 78%, rgba(0,0,0,.10) 0 22%, rgba(0,0,0,0) 46%),
+    linear-gradient(180deg, #ffe7a8 0%, #f2c45f 45%, #d79a2f 100%);
+
+  border: 2px solid rgba(143, 92, 10, .55);
+  box-shadow:
+    0 10px 18px rgba(2,6,23,.18),
+    inset 0 2px 0 rgba(255,255,255,.55),
+    inset 0 -3px 0 rgba(122,72,6,.25);
+
+  color:#0f172a;
+  font-weight:900;
+  font-size:15px;
+  letter-spacing:.02em;
+}
+
+/* 文字の縁取りっぽさ（視認性UP） */
+.num{
+  text-shadow: 0 1px 0 rgba(255,255,255,.55);
+}
+
+/* ボーナスを少しだけ強調したい場合 */
+.num--bonus{
+  background:
+    radial-gradient(circle at 30% 28%, rgba(255,255,255,.95) 0 14%, rgba(255,255,255,0) 28%),
+    radial-gradient(circle at 70% 78%, rgba(0,0,0,.10) 0 22%, rgba(0,0,0,0) 46%),
+    linear-gradient(180deg, #fff1c9 0%, #ffd170 45%, #e3a232 100%);
+  border-color: rgba(122,72,6,.6);
+  transform: translateY(-1px);
+}
+
+/* 小さめ表示（カード内に詰める用） */
+.nums.nums--sm .num{
+  width:40px;
+  height:40px;
+  font-size:14px;
+}
+
+/* SP最適化 */
+@media (max-width: 560px){
+  .nums{ gap:8px; }
+  .num{ width:40px; height:40px; font-size:14px; }
+}
+/* =========================
+   HOME：最新結果エリア
+   ========================= */
+.panel--result{
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+}
+
+/* 最新の抽選結果：縦並び */
+.results-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.result-card{
+  position: relative;
+  border: 1px solid rgba(226,232,240,.95);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 26px rgba(2,6,23,.08);
+  padding: 14px;
+  overflow:hidden;
+}
+
+/* うっすら柄（高級感） */
+.result-card::after{
+  content:"";
+  position:absolute;
+  inset:-40px;
+  background:
+    radial-gradient(rgba(11,58,116,.06) 1px, transparent 1px);
+  background-size: 6px 6px;
+  opacity:.45;
+  pointer-events:none;
+}
+
+.result-head{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.result-meta{
+  margin:0;
+  color: rgba(15,23,42,.70);
+  font-weight: 800;
+  font-size: 12px;
+  white-space:nowrap;
+}
+
+.result-card .nums{
+  position:relative;
+  z-index:1;
+}
+
+.mini-link{
+  position:relative;
+  z-index:1;
+  display:inline-block;
+  margin-top: 10px;
+  color: rgba(11,58,116,.92);
+  font-weight: 900;
+  font-size: 12px;
+  text-decoration:none;
+}
+.mini-link:hover{ text-decoration: underline; }
+
+/* SP */
+@media (max-width: 860px){
+  .results-grid{ grid-template-columns: 1fr; }
+}
+/* 予想ページで使う最低限 */
+.muted-line{ color: rgba(15,23,42,.70); margin: 0; line-height: 1.7; }
+.mini-note{ color: rgba(15,23,42,.65); font-size: 12px; margin: 10px 0 0; }
+/* HOME 背景（最優先で上書き） */
+.page-home{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(47,126,203,0.92) 0%,
+      rgba(123,185,234,0.92) 40%,
+      rgba(233,243,251,0.96) 100%
+    ),
+    url("../assets/bg-home.webp") center top / cover no-repeat;
+  min-height: 100vh;
+}
+/* =========================
+   HOMEだけ 背景を出す（最優先）
+   ========================= */
+
+/* まずページ全体に背景 */
+body.page-home{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.35) 0%,
+      rgba(255,255,255,0.45) 40%,
+      rgba(255,255,255,0.55) 100%
+    ),
+    url("../assets/bg-home.webp") center top / cover no-repeat;
+  min-height: 100vh;
+}
+
+/* ここが本丸：sectionのベタ塗りを消す */
+body.page-home .section,
+body.page-home .section--alt{
+  background: transparent !important;
+}
+
+/* 中身（パネル）は白のまま読みやすく */
+body.page-home .panel,
+body.page-home .result-card,
+body.page-home .draw-card,
+body.page-home .model-item{
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(2px);
+}
+
+/* =========================
+   PCだけ：フッター下が広がるのを止める
+   ========================= */
+@media (min-width: 860px){
+  .footer__inner{
+    flex-wrap: nowrap !important;  /* ← 折り返し禁止 */
+    align-items: center;
+  }
+
+  .footer__links{
+    width: auto !important;        /* ← 100% 等を打ち消す */
+    max-width: none !important;
+    display: inline-flex !important;/* ← 内容幅にする */
+    justify-content: flex-end;
+    gap: 14px;
+  }
+}
+/* HOMEだけ：下の余白を詰める */
+body.page-home .section{
+  padding-bottom: 24px;
+}
+/* 最新の結果 と 開催中 の間に余白を作る */
+.panel--result{
+  margin-bottom: 20px; /* ← 16〜24pxで好み調整 */
+}
+
+/* 余白がフッターの下に出ないようにする（全ページ共通でOK） */
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main{
+  flex: 1;  /* 余りの高さはここが吸う */
+}
+
+footer.footer{
+  margin-top: auto; /* フッターを最下部へ */
+}
+/* =========================
+   ロト6ロジック タイトル背景
+   ========================= */
+
+.page-header{
+  position: relative;
+  padding: 64px 0 56px;
+  color: #ffffff;
+
+  background:
+    /* 文字を読みやすくするための青グラデ */
+    linear-gradient(
+      180deg,
+      rgba(47,126,203,0.85) 0%,
+      rgba(123,185,234,0.85) 55%,
+      rgba(233,243,251,0.95) 100%
+    ),
+    url("../assets/hero-bg.webp");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* タイトル */
+.page-header .page-title{
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 800;
+  letter-spacing: .04em;
+  margin-bottom: 12px;
+}
+
+/* 開催回・抽選日 */
+.page-header .draw-info{
+  font-size: 14px;
+  opacity: .95;
+}
+
+/* 下のセクションとの区切りをきれいに */
+.page-header::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,1)
+  );
+}
+/* =========================
+   ヘッダー背景を発行ボタンまで伸ばす
+   ========================= */
+
+.page-header,
+.issue-control{
+  color:#fff;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(47,126,203,0.85) 0%,
+      rgba(123,185,234,0.85) 55%,
+      rgba(233,243,251,0.95) 100%
+    ),
+    url("../assets/bg-home.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* page-header：タイトル中央 */
+.page-header{
+  text-align: center;
+  padding: 56px 0 18px;
+  position: relative;
+}
+
+.page-header .page-title{
+  margin: 0 0 10px;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+
+/* 開催回・抽選日：サブタイトルくらいの大きさ */
+.page-header .draw-info{
+  margin: 0;
+  font-size: clamp(14px, 2.2vw, 18px);
+  font-weight: 600;
+  opacity: .95;
+}
+
+/* issue-control：背景を続けてボタンを配置 */
+.issue-control{
+  padding: 14px 0 34px;
+  position: relative;
+}
+
+/* 下の白背景へ自然にフェード */
+.issue-control::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height: 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,1));
+}
+
+/* 発行ボタン：中央・幅 */
+.issue-control__inner{
+  display:flex;
+  justify-content:center;
+}
+
+.issue-button{
+  width: min(420px, 100%);
+  padding: 14px 18px;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+/* =========================
+   発行数選択ダイアログ
+   ========================= */
+.issue-dialog{
+  border: none;
+  padding: 0;
+  border-radius: 16px;
+  width: min(520px, calc(100% - 28px));
+}
+
+.issue-dialog::backdrop{
+  background: rgba(0,0,0,.45);
+}
+
+.issue-dialog__panel{
+  padding: 18px 16px 16px;
+}
+
+.issue-dialog__title{
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.issue-dialog__select{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(15,23,42,.12);
+  font-size: 16px;
+  background: #fff;
+}
+
+.issue-dialog__actions{
+  margin-top: 14px;
+  display:flex;
+  gap:10px;
+  justify-content:flex-end;
+}
+/* タイトル〜発行ボタンまで同じ背景 */
+.page-header,
+.issue-control{
+  background:
+    linear-gradient(180deg,
+      rgba(47,126,203,0.85) 0%,
+      rgba(123,185,234,0.85) 55%,
+      rgba(233,243,251,0.95) 100%
+    ),
+    url("../assets/bg-home.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color:#fff;
+}
+
+/* タイトル中央 */
+.page-header{
+  text-align:center;
+  padding:56px 0 18px;
+}
+.page-header .page-title{ margin:0 0 10px; }
+.page-header .draw-info{
+  margin:0;
+  font-size: clamp(14px, 2.2vw, 18px);
+  font-weight: 600;
+}
+
+/* 発行ボタン中央（既存CSSに勝つため少し強めに） */
+.issue-control{
+  padding: 14px 0 34px;
+  position: relative;
+}
+.issue-control__inner{
+  display:flex !important;
+  justify-content:center !important;
+}
+.issue-button{
+  width: min(520px, 100%);
+  border-radius: 999px;
+  padding: 14px 18px;
+  font-weight: 800;
+}
+
+/* 下を白へフェード */
+.issue-control::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height: 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,1));
+}
+.issue-field,
+.issue-note{
+  display:none !important;
+}
+/* ロト6ロジック：ヒーローと次ブロックの境目を消す */
+.hero-issue{
+  margin: 0 !important;
+}
+.hero-issue + *{
+  margin-top: 0 !important;
+}
+.prediction-page .section{
+  padding-top: 0 !important;
+}
+/* 予想（ロト6）：1組=横1列、複数なら縦に増える */
+.prediction-cards{
+  display: grid;
+  gap: 12px;
+}
+
+.number-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+.number-list li{
+  text-align: center;
+}
+.hero-issue__inner{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+/* =========================
+   ロト6ロジック：ヒーロー背景（綺麗版）
+   ========================= */
+body.page-loto6-logic .hero-issue{
+  position: relative;
+  overflow: hidden;
+  margin: 0 !important;
+
+  /* 画像は“素”で出す */
+  background: url("../assets/hero-loto6-logic.webp") center 35% / cover no-repeat;
+
+  color: #fff;
+  padding: 72px 0 64px;
+
+  /* ヒーローが低すぎると綺麗に見えないので最低高さを確保 */
+  min-height: 320px;
+}
+
+/* 文字の可読性だけ確保する薄いフィルター（画像を殺さない） */
+body.page-loto6-logic .hero-issue::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 22, 55, .50) 0%,
+    rgba(6, 22, 55, .22) 55%,
+    rgba(6, 22, 55, .06) 100%
+  );
+  pointer-events:none;
+  z-index:0;
+}
+
+/* 下を“白にフェード”させたい場合はここでやる（画像を白で潰さない） */
+.hero-issue::after{
+  height: 88px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,1)
+  );
+}
+
+/* 中身は必ず前面へ */
+body.page-loto6-logic .hero-issue__inner{
+  position: relative;
+  z-index: 1;
+}
+
+
+
+/* 中身を全部センター */
+.hero-issue__inner{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* タイトル */
+.hero-issue .page-title{
+  margin: 0;
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+
+/* ② 開催回・抽選日＝サブタイトル級 */
+.hero-issue .draw-info{
+  margin: 0;
+  font-size: clamp(14px, 2.2vw, 18px);
+  font-weight: 600;
+  opacity: .95;
+}
+
+/* ③ 発行ボタンも中央・幅固定 */
+.hero-issue .issue-button{
+  width: min(520px, 100%);
+  border-radius: 999px;
+  padding: 14px 18px;
+  font-weight: 800;
+}
+
+/* 「まだブロックが分かれる」保険：ヒーロー直下の余白を消す */
+.hero-issue + *{
+  margin-top: 0 !important;
+}
+/* =========================
+   ロジックバナー（画像付き）
+   ========================= */
+
+.logic-banner{
+  margin: 18px 0 0;
+}
+
+.logic-banner__link{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+
+  text-decoration: none;
+  color: #0f172a;
+
+  background: #ffffff;
+  border: 1px solid rgba(15,23,42,.10);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(2,6,23,.08);
+  overflow: hidden;
+}
+
+.logic-banner__img{
+  width: 100%;
+  height: 96px;
+  object-fit: cover;
+  display: block;
+}
+
+.logic-banner__label{
+  position: absolute;
+  left: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0,0,0,.35);
+}
+
+/* 画像の上に文字を載せるため */
+.logic-banner__link{
+  position: relative;
+}
+
+.logic-banner__arrow{
+  padding: 0 16px;
+  font-weight: 900;
+  color: #155db2;
+}
+body.page-loto6-logic{
+  background: #ffffff;
+}
+/* =========================
+   SP：ロト6ロジック ヒーローを縦に締める
+   ========================= */
+@media (max-width: 560px){
+  body.page-loto6-logic .hero-issue{
+    padding: 36px 0 32px;   /* ← 上下を大幅に縮める */
+    min-height: auto;      /* ← 高さ固定を解除 */
+  }
+
+  /* 下の白フェードも少しだけ短く */
+  body.page-loto6-logic .hero-issue::after{
+    height: 36px;
+  }
+
+  /* タイトルも少しだけ締める */
+  body.page-loto6-logic .hero-issue .page-title{
+    font-size: 22px;
+    letter-spacing: .02em;
+  }
+
+  /* サブテキストの余白を詰める */
+  body.page-loto6-logic .hero-issue .draw-info{
+    margin-top: 4px;
+    font-size: 13px;
+  }
+}
+/* =========================
+   ロジックバナー：画像そのまま表示（枠なし）
+   ========================= */
+.logic-banner{
+  margin: 16px 0 0;
+}
+
+/* aタグはただの箱にする */
+.logic-banner__link{
+  display: block;
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+
+/* 画像は完全にそのまま */
+.logic-banner__img{
+  display: block;
+  width: 100%;
+  height: auto !important;   /* ← 絶対切らない */
+  max-width: 100%;
+  object-fit: initial !important;
+  border-radius: 0 !important;
+}
+
+/* 以前の装飾を全殺し（保険） */
+.logic-banner__label,
+.logic-banner__arrow{
+  display: none !important;
+}
+
+
+/* hover（PCだけ） */
+@media (hover:hover){
+  .logic-banner__link:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 24px 60px rgba(2,6,23,.26);
+  }
+}
+@media (max-width: 560px){
+  .logic-banner{
+    margin-top: 16px;
+  }
+
+  .logic-banner__img{
+    height: 140px; /* ← スマホは少し低く */
+  }
+
+  .logic-banner__label{
+    font-size: 16px;
+  }
+}
+/* =========================
+   ロジックバナー：画像だけでクリック
+   ========================= */
+.logic-banner{
+  margin: 20px 0 0;
+}
+
+.logic-banner__link{
+  display: block;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(2,6,23,.18);
+}
+
+/* 画像は比率を崩さず“バナーっぽく” */
+.logic-banner__img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* もし旧spanが残ってても強制で消す保険 */
+.logic-banner__label,
+.logic-banner__arrow{
+  display: none !important;
+}
+
+/* PCで横長バナー感を強くしたい場合（任意）
+   画像がトリミングされてもOKなら有効化して使ってください */
+@media (min-width: 860px){
+  .logic-banner__img{
+    height: 160px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+/* SPは少し低めでOK */
+@media (max-width: 560px){
+  .logic-banner__img{
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+/* =========================
+   ロジックバナー：親ブロック完全除去
+   ========================= */
+
+/* セクション自体を透明に */
+.prediction-page .section{
+  background: transparent !important;
+}
+
+/* ロジックバナー周りだけ余白を殺す */
+.logic-banner{
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+}
+
+/* container の横余白が枠に見えるのを防ぐ */
+.logic-banner{
+  max-width: 1100px;
+}
+
+/* 画像だけが存在する状態に */
+.logic-banner__link{
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+/* =========================
+   予想番号 & 使い方 UI
+   ========================= */
+.section--prediction-guide{
+  padding: 32px 0;
+}
+
+/* 予想番号ボックス */
+.prediction-box{
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 16px;
+  box-shadow: 0 10px 26px rgba(2,6,23,.08);
+  margin-bottom: 24px;
+}
+
+.prediction-box__title{
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.prediction-box__meta{
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: rgba(15,23,42,.7);
+  text-align: center;
+}
+
+.prediction-box__empty{
+  text-align: center;
+  color: rgba(15,23,42,.6);
+  font-size: 14px;
+}
+
+/* 使い方 */
+.howto{
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 16px;
+  box-shadow: 0 10px 26px rgba(2,6,23,.08);
+}
+
+.howto__title{
+  margin: 0 0 14px;
+  font-size: 17px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.howto__steps{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.howto__steps li strong{
+  display: block;
+  font-size: 14px;
+}
+
+.howto__steps li p{
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: rgba(15,23,42,.75);
+}
+
+.howto__note{
+  margin-top: 14px;
+  font-size: 12px;
+  color: rgba(15,23,42,.6);
+  text-align: center;
+}
+/* =========================
+   予想番号 & 使い方（画像の雰囲気寄せ）
+   ========================= */
+.section--prediction-guide{
+  padding: 28px 0 18px;
+}
+
+/* 共通カード */
+.prediction-box,
+.howto{
+  background: rgba(255,255,255,.94);
+  border: 1px solid rgba(226,232,240,.9);
+  border-radius: 18px;
+  box-shadow: 0 14px 34px rgba(2,6,23,.10);
+  padding: 18px 16px;
+}
+
+/* タイトル類 */
+.prediction-box__title,
+.howto__title{
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.prediction-box__meta{
+  margin: 6px 0 14px;
+  text-align: center;
+  color: rgba(15,23,42,.70);
+  font-size: 12px;
+}
+
+/* 生成中パネル（濃色） */
+.prediction-state{
+  position: relative;
+  padding: 10px;
+}
+
+.prediction-state__panel{
+  background: linear-gradient(180deg, #0b2b52 0%, #0b3a74 100%);
+  border-radius: 14px;
+  padding: 18px 14px;
+  min-height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 16px 34px rgba(11,58,116,.28);
+}
+
+.prediction-state__text{
+  color: rgba(255,255,255,.95);
+  font-weight: 900;
+  letter-spacing: .03em;
+}
+
+/* ロボ画像を置くなら（任意） */
+.prediction-state__bot{
+  position: absolute;
+  right: 6px;
+  bottom: 0px;
+  width: 86px;
+  height: auto;
+  pointer-events: none;
+}
+
+/* 使い方：横並び＋矢印 */
+.howto{
+  margin-top: 16px;
+}
+
+.howto__row{
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.howto__item{
+  background: rgba(247,249,252,.9);
+  border: 1px solid rgba(226,232,240,.9);
+  border-radius: 16px;
+  padding: 14px 12px;
+  text-align: center;
+}
+
+.howto__icon{
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 8px;
+  border-radius: 14px;
+  background: rgba(11,58,116,.08);
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: rgba(11,58,116,.95);
+}
+
+.howto__label{
+  font-weight: 900;
+  font-size: 12px;
+  color: rgba(15,23,42,.85);
+  line-height: 1.35;
+}
+
+.howto__arrow{
+  font-weight: 900;
+  color: rgba(15,23,42,.35);
+}
+
+
+/* =========================
+   生成中ロボット配置
+   ========================= */
+.prediction-state{
+  position: relative;
+}
+
+/* ロボット本体 */
+.prediction-state__bot{
+  position: absolute;
+
+  /* 右下に“寄り添う”配置 */
+  right: -6px;
+  bottom: -4px;
+
+  width: 72px;          /* ← 基本サイズ */
+  height: auto;
+
+  pointer-events: none; /* ← クリック邪魔しない */
+  user-select: none;
+
+  /* ほんのり浮かせる */
+  filter: drop-shadow(0 8px 18px rgba(2,6,23,.25));
+}
+
+/* スマホは少し小さく */
+@media (max-width: 560px){
+  .prediction-state__bot{
+    width: 58px;
+    right: -2px;
+    bottom: -2px;
+  }
+}
+/* =========================
+   HOWTO：画像アイコン対応
+   ========================= */
+.howto__icon{
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 8px;
+
+  display: grid;
+  place-items: center;
+
+  background: none;        /* ← 枠を消す */
+}
+
+.howto__icon img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* スマホは少し小さく */
+@media (max-width: 560px){
+  .howto__icon{
+    width: 52px;
+    height: 52px;
+  }
+}
+/* PC横並びを崩さない（テキスト折返し防止） */
+@media (min-width: 860px){
+  .howto__label{
+    white-space: nowrap;
+  }
+}
+/* PCは必ず横並び（強制） */
+@media (min-width: 561px){
+  .howto__row{
+    grid-template-columns: 1fr auto 1fr auto 1fr !important;
+  }
+  .howto__arrow{
+    display: block !important;
+  }
+}
+/* ===== ロト玉（番号）表示 ===== */
+.prediction-numbers{
+  list-style: none;      /* ← 黒丸消す */
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;         /* ← 横並び */
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: nowrap;     /* ← 1列固定（スマホは後述） */
+}
+.prediction-numbers li{
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: .02em;
+
+  /* 金っぽいロト玉 */
+  background:
+    radial-gradient(circle at 30% 28%, rgba(255,255,255,.95) 0 16%, rgba(255,255,255,0) 30%),
+    radial-gradient(circle at 70% 78%, rgba(0,0,0,.12) 0 22%, rgba(0,0,0,0) 48%),
+    linear-gradient(180deg, #ffe7a8 0%, #f2c45f 45%, #d79a2f 100%);
+  border: 2px solid rgba(143, 92, 10, .55);
+  box-shadow:
+    0 10px 18px rgba(2,6,23,.18),
+    inset 0 2px 0 rgba(255,255,255,.55),
+    inset 0 -3px 0 rgba(122,72,6,.25);
+}
+
+/* 固定数字（11・22）だけ少し強調したい場合 */
+.prediction-numbers .is-fixed{
+  border-color: rgba(21,93,178,.75);
+  box-shadow:
+    0 10px 18px rgba(2,6,23,.18),
+    inset 0 2px 0 rgba(255,255,255,.55),
+    inset 0 -3px 0 rgba(21,93,178,.25);
+}
+@media (max-width: 560px){
+  .prediction-numbers{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .prediction-numbers li{
+    width: 46px;
+    height: 46px;
+    font-size: 16px;
+  }
+}
+/* ===== 白いロト玉（ちゃんと“球”に見える版） ===== */
+.prediction-numbers{
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: nowrap; /* スマホも1列 */
+}
+
+.prediction-numbers li{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 900;
+  font-size: 15px;
+  color: #0f172a;
+
+  /* ★球っぽさの核：強いハイライト＋内側の陰影 */
+  background:
+    /* 左上の強い光（これが無いと“丸ボタン”になる） */
+    radial-gradient(circle at 28% 22%, rgba(255,255,255,1) 0 28%, rgba(255,255,255,0) 45%),
+    /* 右下に向かう陰（球の丸み） */
+    radial-gradient(circle at 68% 72%, rgba(2,6,23,.18) 0 26%, rgba(2,6,23,0) 55%),
+    /* ベースの白（少し青み） */
+    radial-gradient(circle at 50% 45%, #ffffff 0%, #f6f8fc 52%, #e7edf6 100%);
+
+  border: 2px solid rgba(148,163,184,.75);
+
+  /* 外側の影は“落とし影”ではなく“浮き”程度に */
+  box-shadow:
+    0 8px 14px rgba(2,6,23,.14),
+    inset 0 3px 6px rgba(255,255,255,.95),
+    inset 0 -6px 10px rgba(30,41,59,.18);
+}
+
+/* 固定数字（11・22）だけリングを青にしても玉のまま */
+.prediction-numbers .is-fixed{
+  border-color: rgba(59,130,246,.85);
+  box-shadow:
+    0 8px 14px rgba(2,6,23,.14),
+    inset 0 3px 6px rgba(255,255,255,.95),
+    inset 0 -6px 10px rgba(59,130,246,.18);
+}
+/* iPhone SEなど超狭幅：絶対に正円を維持して1列に収める */
+@media (max-width: 360px){
+  .prediction-numbers{
+    gap: 6px;              /* 間隔をさらに詰める */
+  }
+  .prediction-numbers li{
+    width: 38px;           /* ← SE用に小さく */
+    height: 38px;
+    font-size: 13px;
+    flex: 0 0 auto;        /* ← 潰れ防止（楕円化防止） */
+  }
+}
+.prediction-numbers li{
+  flex: 0 0 auto;  /* ← これを通常側にも入れてOK */
+}
+@media (max-width: 360px){
+  .prediction-card{
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+/* ===== 6個を必ず1列で収める（欠けない） ===== */
+.prediction-numbers{
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+
+  display: flex;
+  justify-content: center;
+
+  gap: 6px;
+  max-width: 100%;
+
+  overflow: visible;  /* ← 隠さない */
+}
+
+/* 6個を横幅内で均等に割り当てて、正円維持 */
+.prediction-numbers li{
+  flex: 1 1 0;              /* ← 幅を均等割り */
+  max-width: 44px;          /* ← PCでは大きくしすぎない */
+  aspect-ratio: 1 / 1;      /* ← 正円を強制 */
+  height: auto;             /* ← aspect-ratioに任せる */
+
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+
+  font-weight: 900;
+  font-size: 15px;
+  color: #0f172a;
+
+  /* 白い玉（球） */
+  background:
+    radial-gradient(circle at 28% 22%, rgba(255,255,255,1) 0 28%, rgba(255,255,255,0) 45%),
+    radial-gradient(circle at 68% 72%, rgba(2,6,23,.18) 0 26%, rgba(2,6,23,0) 55%),
+    radial-gradient(circle at 50% 45%, #ffffff 0%, #f6f8fc 52%, #e7edf6 100%);
+  border: 2px solid rgba(148,163,184,.75);
+  box-shadow:
+    0 8px 14px rgba(2,6,23,.14),
+    inset 0 3px 6px rgba(255,255,255,.95),
+    inset 0 -6px 10px rgba(30,41,59,.18);
+}
+
+/* SEなど極小幅は gap と文字だけ少し縮める */
+@media (max-width: 360px){
+  .prediction-numbers{ gap: 5px; }
+  .prediction-numbers li{ font-size: 13px; }
+}
+
+/* 固定数字リング */
+.prediction-numbers .is-fixed{
+  border-color: rgba(59,130,246,.85);
+  box-shadow:
+    0 8px 14px rgba(2,6,23,.14),
+    inset 0 3px 6px rgba(255,255,255,.95),
+    inset 0 -6px 10px rgba(59,130,246,.18);
+}
+
+@media (max-width: 360px){
+  .prediction-card{ padding-left: 12px !important; padding-right: 12px !important; }
+}
+/* ===== 予想カードの「内枠」に玉列を収める ===== */
+
+/* 1) 玉列の親（内枠）に余白を作って影の逃げ道を確保
+   ※ class名が違う可能性があるので、効く方だけ残してOK */
+.prediction-card__inner,
+.prediction-card__box,
+.prediction-card .card__inner{
+  padding: 14px 12px;       /* ← 内枠の中に余白 */
+  border-radius: 16px;
+  overflow: hidden;         /* ← 枠からはみ出さない */
+}
+
+/* 2) もし上のクラスが存在しない場合の保険（スクショの内枠はここが本体の可能性高い） */
+.prediction-card{
+  overflow: hidden;         /* ← 内枠ごと収める */
+}
+
+/* 3) 玉列自体にも左右paddingを入れて、端の玉が枠に当たらないようにする */
+.prediction-numbers{
+  padding: 0 8px;           /* ← 左右に少し余白 */
+  margin-top: 12px;
+}
+/* ===== 予想カード内で玉がはみ出さないように余白を確保 ===== */
+.prediction-card{
+  padding-left: 18px !important;   /* ← 影の逃げ */
+  padding-right: 18px !important;
+}
+
+/* さらに内側の“白い内枠”にも余白を追加（このページはこの枠が狭い） */
+.prediction-card > *{
+  max-width: 100%;
+}
+
+/* 玉列にも左右の安全余白（端の玉が枠に当たらない） */
+.prediction-numbers{
+  padding: 0 6px !important;
+}
+/* ===== 予想カード：玉が内枠からはみ出さないようにする（確実版） ===== */
+.card.prediction-card{
+  padding: 16px 18px !important;   /* ← 左右の“逃げ”を作る */
+  overflow: visible !important;    /* ← 切らない */
+  box-sizing: border-box !important;
+}
+
+/* 玉列のコンテナも「内側に収める」 */
+.card.prediction-card .prediction-numbers{
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 0 10px !important;      /* ← 端の玉＆影の逃げ */
+  margin: 12px 0 0 !important;
+}
+
+/* SEなど極小幅は左右paddingをもう少し増やす */
+@media (max-width: 360px){
+  .card.prediction-card{
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .card.prediction-card .prediction-numbers{
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+/* ===== 玉列が親から飛び出すのを強制的に止める（最終確実版） ===== */
+.card.prediction-card{
+  overflow: hidden !important;   /* ← はみ出した分は切る（枠内に“収まる”） */
+}
+
+/* prediction-numbers を通常レイアウトに戻す */
+.card.prediction-card .prediction-numbers{
+  position: static !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 12px 0 0 !important;
+  padding: 0 !important;
+
+  justify-content: center !important;
+}
+
+/* =========================
+   予想カード：玉を1列で収める（SEでも正円）
+   ========================= */
+
+/* カード内の左右に“安全余白”を作る（影が切れにくい） */
+.card.prediction-card{
+  padding-left: 18px !important;
+  padding-right: 18px !important;
+  box-sizing: border-box;
+}
+
+/* 玉列：6個を横幅で均等割り → aspect-ratioで正円維持 */
+.card.prediction-card .prediction-numbers{
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* 1個の玉：均等割り + 上限サイズ */
+.card.prediction-card .prediction-numbers li{
+  flex: 1 1 0;
+  max-width: 44px;
+  aspect-ratio: 1 / 1;   /* ← これで縦長にならない */
+  height: auto;
+
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+
+  font-weight: 900;
+  font-size: 15px;
+  color: #0f172a;
+
+  /* 白い“球”っぽさ */
+  background:
+    radial-gradient(circle at 28% 22%, rgba(255,255,255,1) 0 28%, rgba(255,255,255,0) 45%),
+    radial-gradient(circle at 68% 72%, rgba(2,6,23,.18) 0 26%, rgba(2,6,23,0) 55%),
+    radial-gradient(circle at 50% 45%, #ffffff 0%, #f6f8fc 52%, #e7edf6 100%);
+  border: 2px solid rgba(148,163,184,.75);
+  box-shadow:
+    0 8px 14px rgba(2,6,23,.14),
+    inset 0 3px 6px rgba(255,255,255,.95),
+    inset 0 -6px 10px rgba(30,41,59,.18);
+}
+
+/* 固定数字（11/22）だけリングを青に */
+.card.prediction-card .prediction-numbers .is-fixed{
+  border-color: rgba(59,130,246,.85);
+  box-shadow:
+    0 8px 14px rgba(2,6,23,.14),
+    inset 0 3px 6px rgba(255,255,255,.95),
+    inset 0 -6px 10px rgba(59,130,246,.18);
+}
+
+/* iPhone SE級：gapと文字を少しだけ縮める（欠け防止） */
+@media (max-width: 360px){
+  .card.prediction-card{
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .card.prediction-card .prediction-numbers{
+    gap: 5px;
+  }
+  .card.prediction-card .prediction-numbers li{
+    font-size: 13px;
+  }
+}
+/* =========================
+   LOTO6 FORTUNE（占い）
+========================= */
+
+
+/* HERO全体も少し占い寄りに */
+.page-loto6-fortune .hero-issue{
+  background: transparent;
+}
+
+/* タイトル＋占いアイコン */
+.fortune-title{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.fortune-title__icon{
+  width: 88px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* スマホ微調整 */
+@media (max-width: 480px){
+  .fortune-title{
+    gap: 10px;
+  }
+
+  .fortune-title__icon{
+    width: 64px;
+  }
+}
+/* =========================
+   Fortune (Gold theme)
+========================= */
+
+.page-loto6-fortune{
+  background:
+    radial-gradient(rgba(255,255,255,.35) 1px, transparent 1px),
+    linear-gradient(180deg, #fff1b8 0%, #ffe6a6 35%, #fff7d6 100%);
+  background-size: 6px 6px, auto;
+}
+
+/* hero wrapper */
+.fortune-hero{
+  padding: 18px 0 10px;
+}
+
+/* main gold card */
+.fortune-hero__card{
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 18px;
+  padding: 18px;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.72) 0%, rgba(255,255,255,.50) 100%);
+  border: 1px solid rgba(140,90,0,.18);
+  box-shadow: 0 18px 40px rgba(120,80,0,.18);
+  position: relative;
+  overflow: hidden;
+}
+
+/* sparkle overlay 느낌 */
+.fortune-hero__card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.65), transparent 35%),
+    radial-gradient(circle at 70% 35%, rgba(255,255,255,.45), transparent 40%),
+    radial-gradient(circle at 35% 80%, rgba(255,255,255,.35), transparent 45%);
+  pointer-events:none;
+  opacity:.65;
+}
+
+.fortune-hero__left{
+  position: relative;
+  z-index: 1;
+}
+
+.fortune-hero__title{
+  margin: 0;
+  font-family: "IBM Plex Sans JP", system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: .02em;
+  font-size: 28px;
+  line-height: 1.25;
+  color: #3a2400;
+}
+
+.fortune-hero__subtitle{
+  margin: 10px 0 0;
+  font-weight: 800;
+  color: rgba(58,36,0,.78);
+  line-height: 1.6;
+}
+
+.fortune-hero__label{
+  margin-top: 14px;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(140,90,0,.12);
+  border: 1px solid rgba(140,90,0,.18);
+  font-weight: 900;
+  color: rgba(58,36,0,.85);
+}
+
+.fortune-hero__form{
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+  max-width: 360px;
+}
+
+/* input gold */
+.page-loto6-fortune .fortune-form__input{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(140,90,0,.25);
+  background: rgba(255,255,255,.85);
+  font-weight: 900;
+  color: #3a2400;
+}
+
+/* button gold (既存btnを活かしつつ) */
+.fortune-hero__btn{
+  border-radius: 999px;
+  font-weight: 900;
+  box-shadow: 0 10px 22px rgba(120,80,0,.22);
+}
+
+/* right image */
+.fortune-hero__right{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fortune-hero__img{
+  width: min(320px, 100%);
+  height: auto;
+  transform: translateY(4px);
+  filter: drop-shadow(0 18px 26px rgba(80,50,0,.25));
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .fortune-hero__card{
+    grid-template-columns: 1fr;
+  }
+  .fortune-hero__right{
+    order: -1;
+    justify-content: flex-end;
+  }
+  .fortune-hero__img{
+    width: 240px;
+  }
+  .fortune-hero__title{
+    font-size: 24px;
+  }
+}
+/* =========================
+   Fortune Hero Background
+========================= */
+
+.page-loto6-fortune .hero-issue{
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0.55)
+    ),
+    url("../assets/fortune-hero-bg.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ヒーローの枠縁を完全に削除 */
+.page-loto6-fortune .fortune-hero__card{
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+/* =========================
+   【最終】ヒーローの“うっすら枠(面)”を完全除去
+========================= */
+
+/* ヒーロー周り（親） */
+.page-loto6-fortune .hero-issue,
+.page-loto6-fortune .prediction-page,
+.page-loto6-fortune .prediction-page > .hero-issue{
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* ヒーローの疑似要素が線/面を作ってる場合 */
+.page-loto6-fortune .hero-issue::before,
+.page-loto6-fortune .hero-issue::after{
+  content: none !important;
+}
+
+/* “枠の正体”になりがちなカード面を完全に無効化 */
+.page-loto6-fortune .fortune-hero__card{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  /* 角丸＋overflow が四角い面を強調するので解除 */
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+
+/* fortune-hero__card のキラオーバーレイを完全停止（これが一番怪しい） */
+.page-loto6-fortune .fortune-hero__card::before,
+.page-loto6-fortune .fortune-hero__card::after{
+  content: none !important;
+}
+
+/* container や inner 側に背景が残るケース対策 */
+.page-loto6-fortune .hero-issue .container,
+.page-loto6-fortune .hero-issue__inner{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* それでも残る場合の“最後の一手”：入力/ボタン以外の枠・影をゼロ */
+.page-loto6-fortune .hero-issue *:not(input):not(button):not(select):not(textarea){
+  box-shadow: none !important;
+  outline: none !important;
+  border-color: transparent !important;
+}
+
+/* 占いヒーローの右アイコンを非表示 */
+.page-loto6-fortune .fortune-hero__right{
+  display: none !important;
+}
+/* ヒーローを1カラム化して中央寄せ */
+.page-loto6-fortune .fortune-hero__card{
+  display: block !important;     /* grid解除 */
+  padding: 28px 18px !important;
+}
+
+.page-loto6-fortune .fortune-hero__left{
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* サブテキストも中央 */
+.page-loto6-fortune .fortune-hero__subtitle{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ラベル（丸い吹き出し）も中央 */
+.page-loto6-fortune .fortune-hero__label{
+  display: inline-block;
+}
+
+/* 入力フォーム部分を中央 */
+.page-loto6-fortune .fortune-hero__form{
+  margin-left: auto;
+  margin-right: auto;
+  justify-items: center;
+}
+
+/* inputの幅を整える */
+.page-loto6-fortune .fortune-form__input{
+  max-width: 360px;
+}
+/* =========================
+   占いページ：結果ブロックを白カードに
+========================= */
+
+/* 今日の運勢 */
+.page-loto6-fortune .fortune-card:not(.fortune-card--bg){
+  background: #ffffff !important;
+  border: 1px solid rgba(15,23,42,08) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,08) !important;
+  border-radius: 16px;
+}
+
+/* 今回の予想番号 */
+.page-loto6-fortune .prediction-card{
+  background: #ffffff !important;
+  border: 1px solid rgba(15,23,42,.08) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08) !important;
+  border-radius: 16px;
+}
+
+/* =========================
+   生年月日 select を大きく・丸く
+========================= */
+
+.page-loto6-fortune .birth-select{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0 6px;
+}
+
+/* select 共通 */
+.page-loto6-fortune .birth-select select{
+  appearance: none;            /* OS依存の角ばりを消す */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  font-size: 18px;
+  font-weight: 800;
+  color: #3a2400;
+
+  padding: 12px 18px;
+  min-height: 52px;
+  border-radius: 999px;        /* ← 完全に丸くする */
+
+  border: 1px solid rgba(140,90,0,.28);
+  background:
+    linear-gradient(180deg, #ffffff 0%, #fff6da 100%);
+
+  box-shadow: 0 6px 16px rgba(120,80,0,.18);
+  cursor: pointer;
+}
+
+/* ▼（矢印）を控えめに配置 */
+.page-loto6-fortune .birth-select select{
+  background-image: linear-gradient(180deg, #ffffff 0%, #fff6da 100%);
+  padding-right: 18px;
+}
+
+
+/* フォーカス時（タップ時） */
+.page-loto6-fortune .birth-select select:focus{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,200,80,.45);
+}
+
+/* スマホ微調整 */
+@media (max-width: 480px){
+  .page-loto6-fortune .birth-select{
+    gap: 8px;
+  }
+
+  .page-loto6-fortune .birth-select select{
+    font-size: 16px;
+    min-height: 48px;
+    padding: 10px 14px;
+  }
+}
+/* 年月日 + 発行数 を横並び中央 */
+.page-loto6-fortune .fortune-hero__row{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* 発行数ブロック */
+.page-loto6-fortune .issue-count{
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+}
+
+.page-loto6-fortune .issue-count__label{
+  font-weight: 900;
+  font-size: 12px;
+  color: rgba(58,36,0,.75);
+}
+
+/* 発行数selectもbirth-selectと同じ丸ボタンに */
+.page-loto6-fortune .issue-count__select{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  font-size: 18px;
+  font-weight: 800;
+  color: #3a2400;
+
+  padding: 12px 18px;
+  min-height: 52px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(140,90,0,.28);
+  background: linear-gradient(180deg, #ffffff 0%, #fff6da 100%);
+
+  box-shadow: 0 6px 16px rgba(120,80,0,.18);
+  cursor: pointer;
+}
+
+
+/* 占いページ：発行数セレクトを白ボタンにする */
+.page-loto6-fortune #issueSelect{
+  background: #ffffff !important;
+  color: #3a2400 !important;
+
+  border: 1px solid rgba(140,90,0,.25) !important;
+  box-shadow: 0 6px 16px rgba(120,80,0,.18) !important;
+
+  border-radius: 999px !important;
+}
+.page-loto6-fortune #issueSelect{
+  background-image:
+    linear-gradient(#fff, #fff),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 8l4 4 4-4' fill='%23999999'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center right 14px, 0 0;
+  background-size: 10px, auto;
+}
+/* 発行数セレクトを“完全に白”に固定（背景画像も無効化） */
+.page-loto6-fortune #issueSelect{
+  background-color: #ffffff !important;
+  background-image: none !important;   /* ←ここが重要 */
+  background: #ffffff !important;      /* 念のため */
+
+  color: #3a2400 !important;
+  border: 1px solid rgba(140,90,0,.25) !important;
+  box-shadow: 0 6px 16px rgba(120,80,0,.18) !important;
+  border-radius: 999px !important;
+
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+}
+/* =========================
+   ロジック予想：発行数（常設セレクト）
+========================= */
+
+.page-loto6-logic .issue-count,
+.page-loto7-logic .issue-count{
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  margin: 10px 0 12px;
+}
+
+.page-loto6-logic .issue-count__label,
+.page-loto7-logic .issue-count__label{
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(15,23,42,.65);
+}
+
+/* “白い丸ボタン” */
+.page-loto6-logic #issueSelect,
+.page-loto7-logic #issueSelect{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  min-width: 120px;
+  height: 52px;
+  padding: 0 18px;
+
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0f172a;
+
+  border: 1px solid rgba(15,23,42,.12);
+  box-shadow: 0 8px 20px rgba(2,6,23,.10);
+
+  font-weight: 900;
+  cursor: pointer;
+}
+
+/* =========================
+   発行数ボタン：小さく＆中央寄せ
+========================= */
+
+.page-loto6-logic #issueSelect,
+.page-loto7-logic #issueSelect{
+
+  /* サイズを少し小さく */
+  min-width: 88px;
+  height: 40px;
+  padding: 0 12px;
+
+  /* テキスト完全中央寄せ */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* 見た目はそのまま白 */
+  background-color: #ffffff !important;
+  background-image: none !important;
+
+  border-radius: 999px;
+  border: 1px solid rgba(15,23,42,.18);
+  box-shadow: 0 4px 10px rgba(2,6,23,.12);
+
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+/* focus時もズレないように */
+.page-loto6-logic #issueSelect:focus,
+.page-loto7-logic #issueSelect:focus{
+  outline: none;
+}
+/* 占い：運勢カード（通常は背景なし） */
+.page-loto6-fortune .fortune-card{
+  position: relative;
+  border-radius: 18px;
+  padding: 20px 22px;
+  box-shadow: 0 10px 28px rgba(2,6,23,.14);
+  overflow: hidden;
+  background: #fff;         /* ←通常は白 */
+  color: inherit;
+}
+
+/* 生成後：今回の運勢ブロック */
+.fortune-card--bg{
+  position: relative;
+
+  background-image: url("../assets/bg-fortune.webp");
+  background-size: contain;
+  background-position: right center; /* ロボを右に活かす */
+  background-repeat: no-repeat;
+
+  border-radius: 18px;
+  overflow: hidden;
+  color: #ffffff;
+}
+/* PC（幅が広い時）は全体を見せる */
+@media (min-width: 900px){
+  .fortune-card--bg{
+    background-size: contain;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-color: #f7d777; /* 余白が出た時のなじませ色 */
+  }
+}
+.fortune-card--bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  /* 左が濃く → 右にいくほど薄く */
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,.75) 0%,
+    rgba(255,255,255,.60) 35%,
+    rgba(255,255,255,.35) 65%,
+    rgba(255,255,255,.15) 100%
+  );
+
+  z-index:0;
+}
+
+
+
+/* 中身を前面に */
+.fortune-card--bg > *{
+  position: relative;
+  z-index: 1;
+}
+.fortune-card--bg .card__title{
+  color: #5c3a00;           /* 濃い金茶 */
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.fortune-card--bg .fortune-text{
+  color: #2b1d00;           /* 黒寄りだが柔らかい */
+  line-height: 1.9;
+  font-weight: 700;
+  text-align: center;
+}
+
+.fortune-card--bg .fortune-text strong{
+  color: #b8860b;           /* ゴールド */
+  font-weight: 900;
+}
+
+.fortune-card--bg .card__title{
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.fortune-card--bg .card__title::after{
+  content: "";
+  display: block;
+  width: 64px;              /* ラインの長さ */
+  height: 2px;              /* 太さ */
+  margin: 10px auto 0;      /* 中央寄せ */
+
+  background: linear-gradient(
+    to right,
+    rgba(255,215,0,.2),
+    rgba(255,215,0,.8),
+    rgba(255,215,0,.2)
+  );
+
+  border-radius: 2px;
+}
+/* 運勢カード：生成後だけ背景（デフォは“全体表示”＝切り取らない） */
+.page-loto6-fortune #fortuneCard.fortune-card--bg{
+  background-image: url("../assets/bg-fortune.webp");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: contain;        /* ← まずcontainを基本にする（PCで切れない） */
+  background-color: #f7d777;       /* 余白が出た時のなじませ色 */
+}
+
+/* スマホだけ：雰囲気重視でcover（切り取りOK） */
+@media (max-width: 767px){
+  .page-loto6-fortune #fortuneCard.fortune-card--bg{
+    background-size: cover;
+  }
+}
+
+
+/* PCだけ：全体表示にする（切り取り防止） */
+@media (min-width: 900px){
+  .page-loto6-fortune #fortuneCard.fortune-card--bg{
+    background-size: contain;           /* ← PCで“全体表示” */
+    background-color: #f7d777;          /* 余白が出たときの馴染ませ */
+    background-position: right center;
+  }
+}
+/* ===== 最終上書き：運勢カード（生成後だけ） ===== */
+.page-loto6-fortune #fortuneCard.fortune-card--bg{
+  /* 2枚重ね：1枚目=余白埋め(cover) / 2枚目=全体表示(contain) */
+  background-image: url("../assets/bg-fortune.webp"), url("../assets/bg-fortune.webp") !important;
+  background-repeat: no-repeat, no-repeat !important;
+  background-position: center center, center center !important;
+
+  /* 背面はcoverで埋める、前面はcontainで“全体表示” */
+  background-size: cover, contain !important;
+
+  background-color: #f7d777 !important; /* 万一の保険 */
+}
+
+/* 背面（cover）を薄くして、前面（contain）を主役にする */
+.page-loto6-fortune #fortuneCard.fortune-card--bg{
+  background-blend-mode: normal !important;
+  /* coverの方が濃く見えすぎる場合は、下の::beforeで調整する */
+}
+
+/* あなたの明るいグラデ膜：全体が見えるように“薄く” */
+.page-loto6-fortune #fortuneCard.fortune-card--bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,.55) 0%,
+    rgba(255,255,255,.35) 45%,
+    rgba(255,255,255,.12) 100%
+  );
+  z-index:0;
+}
+
+/* 中身を前面に */
+.page-loto6-fortune #fortuneCard.fortune-card--bg > *{
+  position: relative;
+  z-index: 1;
+}
+/* 占い（ロト6/ロト7共通）：生成後の運勢カードに背景画像を適用 */
+.page-loto6-fortune #fortuneCard.fortune-card--bg,
+.page-loto7-fortune #fortuneCard.fortune-card--bg{
+  background-image: url("../assets/bg-fortune.webp") !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: contain !important;     /* 切り取りなし */
+  background-color: #f7d777 !important;    /* 余白の馴染ませ */
+}
+
+/* スマホだけ：雰囲気優先でcover（切り取りOKなら） */
+@media (max-width: 767px){
+  .page-loto6-fortune #fortuneCard.fortune-card--bg,
+  .page-loto7-fortune #fortuneCard.fortune-card--bg{
+    background-size: cover !important;
+    background-position: right center !important;
+  }
+}
+/* 占い（ロト6/ロト7共通）：生成後の運勢カード背景は“全面表示優先” */
+.page-loto6-fortune #fortuneCard.fortune-card--bg,
+.page-loto7-fortune #fortuneCard.fortune-card--bg{
+  background-image: url("../assets/bg-fortune.webp") !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;   /* ←全面表示優先（余白ゼロ） */
+  background-color: transparent !important;
+}
+/* =========================
+   logic.html（説明ページ）
+========================= */
+body.page-logic{
+  background:
+    radial-gradient(rgba(0,0,0,.03) 1px, transparent 1px),
+    linear-gradient(180deg, #f8fbff 0%, #ffffff 60%, #f8fafc 100%);
+  background-size: 4px 4px, auto;
+}
+
+.logic-page .section{ padding-top: 18px; }
+
+/* HERO */
+.logic-hero{
+  position: relative;
+  padding: 22px 0 10px;
+}
+.logic-hero__inner{
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 18px;
+  align-items: center;
+}
+.logic-hero__title{
+  margin: 0 0 10px;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: .2px;
+}
+.logic-hero__lead{
+  margin: 0 0 12px;
+  color: rgba(15,23,42,.78);
+  line-height: 1.85;
+}
+.logic-hero__chips{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 14px;
+}
+.chip{
+  display:inline-flex;
+  align-items:center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(11,58,116,.18);
+  background: rgba(21,93,178,.06);
+  color: rgba(11,58,116,.92);
+  font-size: 12px;
+  font-weight: 800;
+}
+.logic-hero__cta{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.logic-hero__right{
+  display:flex;
+  justify-content: center;
+}
+.logic-hero__img{
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 14px 28px rgba(2,6,23,.10);
+  border: 1px solid rgba(226,232,240,.9);
+}
+
+/* 3つの柱：カード */
+.logic-cards{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.logic-card{
+  border: 1px solid rgba(226,232,240,.9);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+  padding: 14px;
+}
+.logic-card img{
+  width: 100%;
+  height: 110px;
+  object-fit: contain;
+  display:block;
+  margin-bottom: 10px;
+}
+.logic-card h3{
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 900;
+}
+.logic-card p{
+  margin: 0;
+  color: rgba(15,23,42,.70);
+  line-height: 1.7;
+  font-size: 13px;
+}
+
+/* 下部CTA */
+.logic-bottom-cta{
+  margin-top: 14px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* SP */
+@media (max-width: 900px){
+  .logic-hero__inner{ grid-template-columns: 1fr; }
+  .logic-hero__img{ max-width: 680px; }
+  .logic-cards{ grid-template-columns: 1fr; }
+}
+/* logic.html 右側画像を消す */
+.logic-hero__right{
+  display: none;
+}
+.logic-hero__inner{
+  grid-template-columns: 1fr;
+}
+
+.logic-hero__left{
+  max-width: 720px;
+  margin: 0 auto;
+}
+/* logic hero を1カラム中央寄せにする */
+.logic-hero__inner--single{
+  display: block;
+}
+
+.logic-hero__left--center{
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* 任意：中央寄せしたい場合は下をON
+.logic-hero__left--center{ text-align:center; }
+.logic-hero__chips, .logic-hero__cta{ justify-content:center; }
+*/
+/* 利用規約ページ */
+.container--narrow{
+  max-width: 820px;
+}
+
+.page-title{
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.terms-box{
+  background: #fff;
+  border: 1px solid rgba(226,232,240,.9);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.terms-box h2{
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.terms-box p,
+.terms-box li{
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(15,23,42,.8);
+}
+
+.terms-box ul{
+  padding-left: 18px;
+}
+
+.terms-footer{
+  margin-top: 20px;
+  text-align: center;
+}

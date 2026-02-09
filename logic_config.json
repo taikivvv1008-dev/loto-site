@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "loto6": {
+    "sum_lo": 100,
+    "sum_hi": 160,
+    "need_lastdigit_kinds": 5,
+    "need_balance_bands": true,
+    "max_tries_per_ticket": 300
+  },
+  "loto7": {
+    "sum_lo": 100,
+    "sum_hi": 170,
+    "max_tries_per_ticket": 400
+  }
+}
